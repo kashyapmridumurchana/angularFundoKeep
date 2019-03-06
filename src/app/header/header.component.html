@@ -1,0 +1,213 @@
+<div fxLayout="row" fxLayoutAlign=" stretch">
+    
+  <mat-toolbar class="fixed-header" fxFlex="100%;" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%">
+ 
+
+    <mat-toolbar-row> 
+     <button    aria-label="Toggle sidenav" mat-icon-button (click)="toggleSide()"
+      matTooltip="Menu">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button> 
+
+
+      
+      <span><img src="./assets/image/keep-512.png" style="width:50px;"></span>
+      &nbsp;&nbsp;
+      <span>
+        <font size="5" face="arial">FundooNote</font>
+      </span>
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      &nbsp;
+     
+      <!-- Search form -->
+      <div class="slinput" ng-init="">
+          <i class="fa fa-search left-icon"></i> 
+          <input  type="search" placeholder="Search here" ng-model="searchInputVal"/> 
+          <i ng-class="{'fa' : true, 'fa-close' : true, 'right-icon' : true, active : (searchInputVal.length > 0)}" ng-click="searchInputVal = ''"></i>
+      </div>
+
+
+
+      <a mat-button routerLink="/header" routerLinkActive="active" matTooltip="Refresh">
+        <mat-icon>refresh</mat-icon>
+      </a>
+
+     
+
+      
+            
+     <button  *ngIf="!abc " (click)=hideButton() (clickButton)=onClickBtn()  mat-icon-button >
+<mat-icon >view_module</mat-icon>
+     </button>
+     
+     <button *ngIf="abc " (click)=hideButton1()   mat-icon-button>
+      <mat-icon>view_agenda</mat-icon>
+           </button>
+           
+
+      
+
+      <button mat-icon-button [matMenuTriggerFor]="sett" matTooltip="settings">
+          <mat-icon>settings</mat-icon>
+        </button>
+        <mat-menu #sett="matMenu">
+          <button mat-menu-item>
+            
+            <span>Settings</span>
+          </button>
+          <button mat-menu-item >
+           
+            <span>Send Feedback</span>
+          </button>
+          <button mat-menu-item>
+            
+            <span>Edit Labels</span>
+          </button>
+          <button mat-menu-item>
+            
+            <span>Help</span>
+          </button>
+          <button mat-menu-item>
+            
+            <span>App downloads</span>
+          </button>
+          <button mat-menu-item>
+            
+              <span>Keyboard shortcuts</span>
+            </button>
+        </mat-menu>
+
+      &nbsp;
+
+      <button mat-icon-button [matMenuTriggerFor]="App" matTooltip="Apps">
+          <mat-icon>apps</mat-icon>
+        </button>
+        <mat-menu #App="matMenu">
+            <mat-grid-list cols="3" >
+                <mat-grid-tile>
+
+                    <button mat-button [matMenuTriggerFor]="user" matTooltip="Google account">
+                        <mat-icon>face</mat-icon>
+                      </button>
+                </mat-grid-tile>
+                
+
+                
+                <mat-grid-tile>
+
+               <button mat-button [matMenuTriggerFor]="user" matTooltip="Search">
+                    <mat-icon>Google</mat-icon> 
+                </button>
+                </mat-grid-tile>
+
+
+                <mat-grid-tile>
+                    <button mat-button [matMenuTriggerFor]="user" matTooltip="Maps">
+                        <mat-icon>Maps</mat-icon> 
+                    </button>
+
+                </mat-grid-tile>
+
+
+                
+                <mat-grid-tile>
+
+                    <button mat-button [matMenuTriggerFor]="user" matTooltip="Youtube">
+                        <mat-icon>Youtube</mat-icon> 
+                    </button>
+                </mat-grid-tile>
+
+
+                <mat-grid-tile>
+                    <button mat-button [matMenuTriggerFor]="user" matTooltip="Playstore">
+                        <mat-icon>Play</mat-icon> 
+                    </button>
+
+                </mat-grid-tile>
+
+
+                <mat-grid-tile>
+
+                    <button mat-button [matMenuTriggerFor]="user" matTooltip="Gmail">
+                        <mat-icon>mail</mat-icon> 
+                    </button>
+                </mat-grid-tile>
+
+
+                <mat-grid-tile>
+                    <button mat-button [matMenuTriggerFor]="user" matTooltip="Contacts">
+                        <mat-icon>perm_contact_calendar</mat-icon> 
+                    </button>
+                </mat-grid-tile>
+
+
+                <mat-grid-tile>
+                    <button mat-button [matMenuTriggerFor]="user" matTooltip="Drive">
+                        <mat-icon>Drive</mat-icon> 
+                    </button>
+
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+
+                    <button mat-button [matMenuTriggerFor]="user" matTooltip="Calender">
+                        <mat-icon>calendar_today</mat-icon> 
+                    </button>
+                </mat-grid-tile>
+
+
+                <mat-grid-tile>
+                  <button mat-button [matMenuTriggerFor]="user" matTooltip="Google+">
+                    <mat-icon>Google+</mat-icon> 
+                </button>
+              </mat-grid-tile>
+
+
+                <mat-grid-tile>
+
+                    <button mat-button [matMenuTriggerFor]="user" matTooltip="Translate">
+                        <mat-icon>translate</mat-icon> 
+                    </button>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <button mat-button [matMenuTriggerFor]="user" matTooltip="Photos">
+                        <mat-icon>photo</mat-icon> 
+                    </button>
+
+
+                </mat-grid-tile>
+              </mat-grid-list>
+           
+            </mat-menu>
+
+
+
+        <button mat-button matTooltip="Notifications">
+            <mat-icon>notifications_on</mat-icon>
+          </button>
+
+
+      <button  mat-button [matMenuTriggerFor]="user" matTooltip="Google account">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu  #user="matMenu">
+        <button  mat-menu-item >
+          <mat-icon >logout</mat-icon>
+          <a mat-button routerLink="/login">
+            <span>Logout</span>
+          </a>
+        </button>
+      </mat-menu>
+    
+  
+ </mat-toolbar-row> 
+</mat-toolbar>
+</div>
+
+<app-side-nav [toggleNav]="toggleNav" ></app-side-nav>
+ 
+<!-- <app-mainnote [abc]="!abc"></app-mainnote> -->

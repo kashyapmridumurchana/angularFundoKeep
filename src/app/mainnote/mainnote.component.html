@@ -1,0 +1,139 @@
+ 
+    <div fxFlex="40%">
+      <app-notesearchbody (eventCreate)="refresh($event)"></app-notesearchbody>
+    </div>
+
+    <div >
+      <app-pinned-note [notes]="notes" (eventPin)="refresh($event)"></app-pinned-note>
+    </div>
+
+
+
+    
+     <div >
+    <div  class="move" *ngFor="let note of notes">
+      <mat-card  style="background-color: wheat"  style="width: 570px;" *ngIf="!note.archive && !note.inTrash &&!note.pinned" >
+       
+      
+        <mat-card-header class="head">
+          <mat-card-title (click)=openDialog(note)>
+            {{note.title}}
+           
+          </mat-card-title>
+          <button class="butt"  mat-icon-button (click)=moveToPin(note) matTooltip="pin">
+            <mat-icon>colorize</mat-icon>
+          </button>
+        </mat-card-header>
+        
+     
+        <mat-card-content (click)=openDialog(note)>
+          {{note.description}}
+        </mat-card-content>
+        <div>
+          <button mat-icon-button matTooltip="Remind me">
+            <mat-icon>add_alert</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Collaborator">
+            <mat-icon>person_add</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Change color">
+            <mat-icon>palette</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Add image">
+            <mat-icon>image</mat-icon>
+          </button>
+          <button  mat-icon-button (click)=sendToArchive(note) matTooltip="Archive">
+            <mat-icon>archive</mat-icon>
+          </button>
+
+          <button mat-icon-button [matMenuTriggerFor]="more" matTooltip="more">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #more="matMenu" class="morecard">
+            <button mat-button (click)=deleteNote(note)>Delete Note</button>
+  </mat-menu>
+          <button mat-icon-button matTooltip="undo">
+            <mat-icon>undo</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="redo">
+            <mat-icon>redo</mat-icon>
+          </button>
+        </div>
+    
+     
+      </mat-card>
+   
+    </div>
+  </div>
+ 
+
+
+<!--  
+ execute is grid list pressed -->
+    
+<!--  
+<mat-grid-list *ngIf="!abc" cols="2" rowHeight="200px" gutterSize="20px">
+    
+    <div  *ngFor="let note of notes">
+       
+        <mat-grid-tile >
+
+      <mat-card style="background-color: wheat"  style="width: 300px;" *ngIf="!note.archive && !note.inTrash &&!note.pinned" >
+       
+        <mat-card-header>
+          
+          <mat-card-title (click)=openDialog(note)>
+            {{note.title}}
+           
+          </mat-card-title>
+          <button  mat-icon-button (click)=moveToPin(note) matTooltip="pin">
+            <mat-icon>colorize</mat-icon>
+          </button>
+        
+
+        </mat-card-header>
+
+
+        <mat-card-content (click)=openDialog(note)>
+          {{note.description}}
+        </mat-card-content>
+      
+
+        <div>
+          <button mat-icon-button matTooltip="Remind me">
+            <mat-icon>add_alert</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Collaborator">
+            <mat-icon>person_add</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Change color">
+            <mat-icon>palette</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Add image">
+            <mat-icon>image</mat-icon>
+          </button>
+          <button  mat-icon-button (click)=sendToArchive(note) matTooltip="Archive">
+            <mat-icon>archive</mat-icon>
+          </button>
+
+          <button mat-icon-button [matMenuTriggerFor]="more" matTooltip="more">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #more="matMenu" class="morecard">
+            <button mat-button (click)=deleteNote(note)>Delete Note</button>
+  </mat-menu>
+          <button mat-icon-button matTooltip="undo">
+            <mat-icon>undo</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="redo">
+            <mat-icon>redo</mat-icon>
+          </button>
+        </div>
+     
+      </mat-card>
+   
+    
+    </mat-grid-tile>
+
+  </div>
+</mat-grid-list>  -->

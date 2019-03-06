@@ -1,0 +1,19 @@
+.move{
+
+ 
+  padding-left: 100px;
+  padding-bottom: 5px;
+   
+  }
+
+
+.head{
+
+  position: relative;
+}
+
+.butt{
+  position: absolute;
+
+  right: 10px;
+}
