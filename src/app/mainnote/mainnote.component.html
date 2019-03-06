@@ -29,6 +29,20 @@
         <mat-card-content (click)=openDialog(note)>
           {{note.description}}
         </mat-card-content>
+
+
+
+        <mat-chip-list #chipList>
+            <mat-chip *ngFor="let label of note.labels"  [selectable]="selectable"
+            [removable]="removable" (removed)="remove(note.noteId,label.labelId)" >
+              {{label.labelName}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+           
+          </mat-chip-list>
+
+
+
         <div>
           <button mat-icon-button matTooltip="Remind me">
             <mat-icon>add_alert</mat-icon>
@@ -50,8 +64,13 @@
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #more="matMenu" class="morecard">
-            <button mat-button (click)=deleteNote(note)>Delete Note</button>
-  </mat-menu>
+            <div><button mat-button (click)=deleteNote(note)>Delete Note</button></div>
+
+           <div><button mat-button >Add Label
+
+           </button></div>
+
+            </mat-menu>
           <button mat-icon-button matTooltip="undo">
             <mat-icon>undo</mat-icon>
           </button>

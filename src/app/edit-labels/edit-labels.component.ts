@@ -41,12 +41,13 @@ export class EditLabelsComponent implements OnInit {
       "labelName":name
     }
     this.noteService.createLabel(newLabel).subscribe(response =>{
-      this.ngOnInit();
+     
       this.snackBar.open("Label created successfully", "OK", {
         duration: 3000,
       });
     })
-    this.ngOnInit();
+    this.getLabels();
+    this.dialogRef.close();
   }
   
 
@@ -74,6 +75,8 @@ this.noteService.deleteLabel(label.labelId).subscribe(response => {
 this.dialogRef.close();
 
 }
+
+
 
 
 

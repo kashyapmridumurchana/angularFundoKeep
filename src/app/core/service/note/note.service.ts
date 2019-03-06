@@ -104,4 +104,31 @@ createLabel(label) {
   };
   return this.httpUtil.postServiceForNoteCreate(environment.note_url + 'createlabel', label,httpheaders);
 }
+
+
+
+removeLabelFromNote(noteId, labelId) {
+  return this.httpUtil.deleteServiceWithParams(`${environment.note_url}removenotelabel`, {
+    params: {
+      noteId: noteId,
+      labelId: labelId,
+    },
+    observe: 'response'
+  }
+  )
+}
+
+// addLabelToNote(noteId, labelId) {
+//   return this.httpUtil.putServiceWithParams(`${environment.note_url}addnotelabel`, {
+//     params: {
+//       noteId: noteId,
+//       labelId: labelId,
+//     },
+//     observe: 'response'
+//   }
+//   )
+// }
+
+
+
 }

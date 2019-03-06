@@ -6,6 +6,7 @@ import { MatDialog, MatSnackBar, MatDialogRef, MAT_DIALOG_DATA } from '@angular/
 import { Subject } from 'rxjs';
 
 
+
 @Component({
   selector: 'app-mainnote',
   templateUrl: './mainnote.component.html',
@@ -17,6 +18,9 @@ export class MainnoteComponent implements OnInit {
   @Input() public abc : Subject<any>;
   public mytoken = '';
   public notes: Note[] = [];
+  selectable = true;
+  removable = true;
+
   constructor(private noteService: NoteService, private dialog: MatDialog, 
     private snackBar: MatSnackBar ) { }
 
@@ -122,4 +126,42 @@ if(event)
 }
 }
 
-}
+
+
+remove(note,label)
+  {
+  this.noteService.removeLabelFromNote(note,label).subscribe(response =>{
+    this.snackBar.open("Label removed successfully from note", "OK", {
+      duration: 3000,
+    });
+  },
+  (error) => {
+    console.log(error);
+  
+  })
+  }
+ 
+
+
+
+  // addLabel(note,label)
+  // {
+  //   this.noteService.addLabelToNote(note,label).subscribe(response =>{
+  //     this.snackBar.open("Label added successfully to note", "OK", {
+  //       duration: 3000,
+  //     });
+  //   },
+  //   (error) => {
+  //     console.log(error);
+    
+  //   })
+
+
+
+
+  }
+
+
+
+
+
