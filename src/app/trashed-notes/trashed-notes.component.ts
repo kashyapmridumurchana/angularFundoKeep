@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NoteService } from '../core/service/note/note.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { Note } from '../core/model/note/note';
+import { UpdateNoteComponent } from '../update-note/update-note.component';
 
 @Component({
   selector: 'app-trashed-notes',
@@ -9,29 +10,28 @@ import { Note } from '../core/model/note/note';
   styleUrls: ['./trashed-notes.component.css']
 })
 export class TrashedNotesComponent implements OnInit {
- 
+
   public mytoken = '';
   public notes: Note[] = [];
 
 
-  constructor(private noteService: NoteService, private dialog: MatDialog, private snackBar: MatSnackBar ) { }
-  
+  constructor(private noteService: NoteService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
+
 
   ngOnInit() {
-this.mytoken=localStorage.getItem('token');
+    this.mytoken = localStorage.getItem('token');
     this.getNotes();
   }
 
-  getNotes() {
-    console.log("token", this.mytoken);
+  public getNotes() {
     this.noteService.retrieveNotes(this.mytoken).subscribe(newNote => {
       this.notes = newNote;
     }
     )
   }
 
-  openDialog(note): void {
-    const dialogRef = this.dialog.open(TrashedNotesComponent, {
+  public openDialog(note): void {
+    const dialogRef = this.dialog.open(UpdateNoteComponent, {
       width: '550px',
       data: note
     });
@@ -41,13 +41,11 @@ this.mytoken=localStorage.getItem('token');
           duration: 3000,
         });
       })
-      console.log('The dialog was closed');
     });
   }
 
 
-  deleteNoteForever(note) {
-    console.log(note.noteId);
+  public deleteNoteForever(note) {
     this.noteService.deleteNote(note.noteId).subscribe(response => {
       this.snackBar.open("deleted Note forever", "OK", { duration: 2000 });
     }), error => {
@@ -56,19 +54,17 @@ this.mytoken=localStorage.getItem('token');
   }
 
 
-  restore(note)
-  {
+  public restore(note) {
     var newNote = {
       ...note,
       "inTrash": false,
-     
+
     }
-    console.log(newNote);
     this.noteService.updateNote(newNote).subscribe(response => {
       this.snackBar.open(" Restored ", "OK", {
         duration: 3000,
       });
-      this.ngOnInit();
+      this.getNotes();
     })
   }
-  }
+}

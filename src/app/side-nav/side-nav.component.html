@@ -1,54 +1,39 @@
-
 <!--side navigation bar -->
-
-<mat-sidenav-container  class="example-container">
-  <mat-sidenav  #drawer mode="side" opened role="navigation">
-    <mat-nav-list >
-      
-      <button mat-menu-item  (click)="navigateNotes()" >
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #drawer mode="side" opened role="navigation">
+    <mat-nav-list>
+      <button mat-menu-item (click)="navigateNotes()">
         <mat-icon>notes</mat-icon>
         <span>Notes</span>
       </button>
-     
       <button mat-menu-item>
         <mat-icon>notifications</mat-icon>
         <span>Reminder</span>
       </button>
       <mat-divider></mat-divider><br>
-      
+
       &nbsp;&nbsp;&nbsp;&nbsp;
       <span>
-          <font size="1" face="arial">LABELS</font>
-        </span>
-       
-
-
+        <font size="1" face="arial">LABELS</font>
+      </span>
       <button mat-menu-item (click)="editLabels()">
-          <mat-icon>edit</mat-icon>
-          <span> <b>Edit Labels</b></span>
-        </button>
-
-        <div *ngFor="let label of labels">
-         &nbsp;
-         &nbsp;
-          <mat-icon>label</mat-icon>
-         &nbsp;
-         &nbsp;
-         &nbsp;
-          <span> {{label.labelName}}</span>
-        
-
-        </div>
-
-
-
-        <mat-divider></mat-divider>
-      
+        <mat-icon>edit</mat-icon>
+        <span> <b>Edit Labels</b></span>
+      </button>
+      <div *ngFor="let label of labels">
+        &nbsp;
+        &nbsp;
+        <mat-icon>label</mat-icon>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <span> {{label.labelName}}</span>
+      </div>
+      <mat-divider></mat-divider>
       <button mat-menu-item (click)="navigateArchive()">
         <mat-icon>archive</mat-icon>
         <span>Archive</span>
       </button>
-      
       <button mat-menu-item (click)="navigateTrash()">
         <mat-icon>delete</mat-icon>
         <span>Trash</span>
@@ -60,5 +45,4 @@
       <router-outlet></router-outlet>
     </main>
   </mat-sidenav-content>
-</mat-sidenav-container> 
-   
+</mat-sidenav-container>

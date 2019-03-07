@@ -1,4 +1,8 @@
 .bor{
     border: hidden;
     outline: none;
+    width: 500px;
+}
+.moveButton{
+    float: right;
 }

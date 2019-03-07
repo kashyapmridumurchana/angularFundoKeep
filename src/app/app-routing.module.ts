@@ -11,12 +11,13 @@ import { ArchiveNotesComponent } from './archive-notes/archive-notes.component';
 import { TrashedNotesComponent } from './trashed-notes/trashed-notes.component';
 import { HeaderComponent } from './header/header.component';
 import { EditLabelsComponent } from './edit-labels/edit-labels.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const appRoutes: Routes = [
  
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'header', component:HeaderComponent ,
+  { path: 'header', component:HeaderComponent ,canActivate:[AuthGuard],
   children: [
     
     { path: '', redirectTo: 'mainnote', pathMatch: 'full' },

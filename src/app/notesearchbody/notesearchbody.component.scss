@@ -18,12 +18,13 @@ input {
    background-color:white;
    border: hidden;
    outline: none;
+   width: 500px;
  
-   
  
-
   }
-  
+  .movePanel{
+    width: 600px;
+  }
 
   :host {
     .container {
@@ -35,10 +36,11 @@ input {
     display: flex;
    
       }
-      
-        
-        
-
-      
+       
     }
   }
+.moveButton{
+ text-align: right;
+ width: 100%;
+
+}

@@ -1,6 +1,6 @@
 .move{
 
- 
+  padding-top: 100px;
   padding-left: 100px;
   padding-bottom: 5px;
    /* padding-top: 25px; */
@@ -16,4 +16,10 @@
   position: absolute;
 
   right: 10px;
+}
+.moveCard
+{
+
+width: 570px;
+background-color:wheat;
 }

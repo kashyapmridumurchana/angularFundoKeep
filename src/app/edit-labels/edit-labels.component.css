@@ -5,3 +5,15 @@
     text-align: center;
    
 }
+.area{
+    width: 395px;
+    display: flex;
+    justify-content: space-between;
+}
+.centre{
+    text-align: center;
+}
+.moveRight{
+
+    float: right;
+}

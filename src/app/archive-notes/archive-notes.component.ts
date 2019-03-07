@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NoteService } from '../core/service/note/note.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { Note } from '../core/model/note/note';
+import { UpdateNoteComponent } from '../update-note/update-note.component';
 
 @Component({
   selector: 'app-archive-notes',
@@ -10,6 +11,7 @@ import { Note } from '../core/model/note/note';
 })
 export class ArchiveNotesComponent implements OnInit {
 
+  
   public mytoken = localStorage.getItem('token')
   public notes: Note[] = [];
 
@@ -20,8 +22,7 @@ export class ArchiveNotesComponent implements OnInit {
 
   }
 
-  getNotes() {
-    console.log("token", this.mytoken);
+public  getNotes() {
     this.noteService.retrieveNotes(this.mytoken).subscribe(newNote => {
       this.notes = newNote;
     }
@@ -29,8 +30,8 @@ export class ArchiveNotesComponent implements OnInit {
   }
 
 
-  openDialog(note): void {
-    const dialogRef = this.dialog.open(ArchiveNotesComponent, {
+ public openDialog(note): void {
+    const dialogRef = this.dialog.open(UpdateNoteComponent, {
       width: '550px',
       data: note
     });
@@ -40,21 +41,29 @@ export class ArchiveNotesComponent implements OnInit {
           duration: 3000,
         });
       })
-      console.log('The dialog was closed');
     });
   }
 
-  deleteNote(note) {
-    console.log(note.noteId);
-    this.noteService.deleteNote(note.noteId).subscribe(response => {
-      this.snackBar.open("deleted Note", "OK", { duration: 2000 });
-      this.ngOnInit();
-    }), error => {
-      this.snackBar.open("error", "error to retrieve notes", { duration: 2000 });
+ 
+  public deleteNote(note) {
+    var newNote = {
+      ...note,
+      inTrash: true,
     }
+    this.noteService.updateNote(newNote).subscribe(response => {
+      this.snackBar.open("Sent to Trash ", "OK", {
+        duration: 3000,
+      });
+      this.getNotes();
+    },
+      (error) => {
+        console.log('Error while deleting note::->', error);
+      })
   }
 
-  unArchive(note)
+
+
+ public unArchive(note)
   {
     var newNote = {
       ...note,
@@ -66,7 +75,7 @@ export class ArchiveNotesComponent implements OnInit {
       this.snackBar.open(" unArchive ", "OK", {
         duration: 3000,
       });
-      this.ngOnInit();
+      this.getNotes();
     },
       (error) => {
         console.log('Error while unarchiving note::->', error);

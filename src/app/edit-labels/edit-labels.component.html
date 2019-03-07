@@ -1,45 +1,22 @@
 <p> <b>Edit Labels </b></p>
 
-<div fxLayout="row">
-    
-        <mat-icon>clear</mat-icon>
-    
-
-    <div style="width: 300px;"  data-text="Create new label"  contenteditable="true" class="textarea" id="labelName"
-        #labelName>
+<div class="area" fxLayout="row">
+    <mat-icon>clear</mat-icon>
+    <div  data-text="Create new label" contenteditable="true" class="input" id="labelName"  #labelName>
     </div>
     <mat-icon (click)="createLabel(labelName)">done</mat-icon>
-
 </div>
-
-
 <mat-divider></mat-divider>
-
-
-
-
 
 
 <mat-divider></mat-divider>
 <div *ngFor="let label of labels">
-    <div style="text-align: center" fxLayout=row>
-
-        <mat-icon class="icon" (click)=deleteLabel(label)>delete</mat-icon>
-
+    <div class="centre" fxLayout=row>
+        <mat-icon (click)=deleteLabel(label)>delete</mat-icon>
         <input class="box" [(ngModel)]="label.labelName" [value]=label.labelName placeholder="LabelName" #lab>
-
-
-        <!-- <input class="textarea" data-text="Create new label" contenteditable="true" id="text" #labl>
-        {{label.labelName}} -->
-
-
-        <mat-icon class="icon" (click)=labelUpdate(label)>edit</mat-icon>
-
+        <mat-icon (click)=labelUpdate(label)>edit</mat-icon>
     </div>
 </div>
-
 <div>
-
-
-    <button style="float: right;" (click)="createLabel(labelName)" mat-icon-button> Done </button>
+    <button class="moveRight" (click)="closeClick()" mat-icon-button> Done </button>
 </div>

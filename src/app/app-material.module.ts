@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import{ MatButtonModule,MatRippleModule,MatSelectModule,MatInputModule, MatToolbarModule, MatMenuModule,MatSidenavModule, MatListModule, MatDividerModule, MatTooltipModule, MatNativeDateModule, MatExpansionModule, MatGridListModule, MatSnackBarModule, MatSlideToggleModule, MatChipsModule,  
+import{ MatButtonModule,MatRippleModule,MatSelectModule,MatInputModule, MatToolbarModule, MatMenuModule,MatSidenavModule, MatListModule, MatDividerModule, MatTooltipModule, MatNativeDateModule, MatExpansionModule, MatGridListModule, MatSnackBarModule, MatSlideToggleModule, MatChipsModule, MatCheckboxModule,  
  } from '@angular/material';
 import {MatIconModule} from '@angular/material/icon'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -39,7 +39,8 @@ import {MatDialogModule} from '@angular/material/dialog';
    MatSnackBarModule,
    MatSlideToggleModule,
    MatDialogModule,
-   MatChipsModule
+   MatChipsModule,
+   MatCheckboxModule
 
    
    
@@ -70,7 +71,8 @@ import {MatDialogModule} from '@angular/material/dialog';
    MatSnackBarModule,
    MatSlideToggleModule,
    MatDialogModule,
-   MatChipsModule
+   MatChipsModule,
+   MatCheckboxModule
   
   ]
 })

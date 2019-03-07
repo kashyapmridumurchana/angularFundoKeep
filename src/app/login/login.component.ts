@@ -32,26 +32,23 @@ export class LoginComponent implements OnInit {
   }
   get f() { return this.loginForm.controls; }
 
-  onSubmit(user) {
+  public onSubmit(user) {
     this.submitted = true;
 
     // stop here if form is invalid
     if (this.loginForm.invalid) {
       console.log("invalid")
     }
-    console.log(user);
     this.userService.login(user).subscribe(response => {
-      console.log(response);
-
       console.log("login successfull");
       localStorage.setItem('token', response.headers.get('token'));
       this.router.navigate(['/header']);
 
     },
-    (error)=>{
-      console.log("Couldnt log in");
+      (error) => {
+        console.log("Couldnt log in");
 
-    });
-    
+      });
+
   }
 }

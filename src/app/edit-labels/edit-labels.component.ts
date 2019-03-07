@@ -9,39 +9,34 @@ import { MatSnackBar, MatDialogRef } from '@angular/material';
   styleUrls: ['./edit-labels.component.css']
 })
 export class EditLabelsComponent implements OnInit {
-  
+
   public mytoken = '';
-  public labels: Label[]=[];
- 
-  constructor( private noteService:NoteService,private snackBar: MatSnackBar,
-    public dialogRef: MatDialogRef<EditLabelsComponent>,) { }
+  public labels: Label[] = [];
+
+  constructor(private noteService: NoteService, private snackBar: MatSnackBar,
+    public dialogRef: MatDialogRef<EditLabelsComponent>, ) { }
+
+
 
   ngOnInit() {
     this.getLabels();
   }
 
 
-  getLabels()
-  {
+  public getLabels() {
     this.mytoken = localStorage.getItem('token');
-    console.log("token", this.mytoken);
     this.noteService.retrieveLabels(this.mytoken).subscribe(newLabel => {
       this.labels = newLabel;
-      console.log(this.labels);
-      console.log(newLabel)
     })
-    
+
   }
 
-  createLabel(label)
-  {
-     var name=label.innerHTML;
-     console.log(name)
-    var newLabel={
-      "labelName":name
+  public createLabel(label) {
+    var name = label.innerHTML;
+    var newLabel = {
+      "labelName": name
     }
-    this.noteService.createLabel(newLabel).subscribe(response =>{
-     
+    this.noteService.createLabel(newLabel).subscribe(response => {
       this.snackBar.open("Label created successfully", "OK", {
         duration: 3000,
       });
@@ -49,14 +44,15 @@ export class EditLabelsComponent implements OnInit {
     this.getLabels();
     this.dialogRef.close();
   }
-  
 
-  labelUpdate(label)
-  {
-    this.noteService.updateLabel(label).subscribe(response =>{
+
+  public labelUpdate(label) {
+    this.noteService.updateLabel(label).subscribe(response => {
+      this.getLabels();
       this.snackBar.open("Label updated successfully", "OK", {
         duration: 3000,
       });
+     
     })
     this.dialogRef.close();
 
@@ -64,24 +60,24 @@ export class EditLabelsComponent implements OnInit {
 
 
 
-  deleteLabel(label)
-  {
-console.log(label.labelId);
-this.noteService.deleteLabel(label.labelId).subscribe(response => {
-  this.snackBar.open("deleted Label forever", "OK", { duration: 2000 });
-}), error => {
-  this.snackBar.open("error", "error to deleting notes", { duration: 2000 });
-}
-this.dialogRef.close();
-
-}
-
-
-
-
-
+  public deleteLabel(label) {
+    this.noteService.deleteLabel(label.labelId).subscribe(response => {
+      this.snackBar.open("deleted Label forever", "OK", { duration: 2000 });
+    }), error => {
+      this.snackBar.open("error", "error to deleting notes", { duration: 2000 });
+    }
+    this.dialogRef.close();
 
   }
- 
+
+
+  public closeClick() {
+    this.dialogRef.close();
+  }
+
+
+
+}
+
 
 

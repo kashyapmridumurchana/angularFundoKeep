@@ -25,16 +25,17 @@ export class RegistrationComponent implements OnInit {
       mobileNumber: ['', [Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}$")]]
     });
   }
+
   get f() { return this.registerForm.controls; }
 
-  onSubmit(user) {
+  public onSubmit(user) {
     this.submitted = true;
 
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
     }
-console.log(user);
+    console.log(user);
     this.userService.register(user).subscribe(response => {
       console.log(response);
       if (response.status == 200) {
@@ -46,7 +47,7 @@ console.log(user);
         console.log(response.body.headers);
       }
     })
-   
+
 
   }
 }

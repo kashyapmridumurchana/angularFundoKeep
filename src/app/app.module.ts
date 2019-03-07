@@ -19,6 +19,8 @@ import { PinnedNoteComponent } from './pinned-note/pinned-note.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { HeaderComponent } from './header/header.component';
 import { EditLabelsComponent } from './edit-labels/edit-labels.component';
+import { NoteFilterPipe } from './pipe/note-filter.pipe';
+import { OtherNotesComponent } from './other-notes/other-notes.component';
 
 
 
@@ -40,6 +42,8 @@ import { EditLabelsComponent } from './edit-labels/edit-labels.component';
     SideNavComponent,
     HeaderComponent,
     EditLabelsComponent,
+    NoteFilterPipe,
+    OtherNotesComponent,
     
   ],
   imports: [

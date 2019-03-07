@@ -1,9 +1,5 @@
 <div class="move" *ngFor="let note of notes">
-
-  
-  <mat-card   style="width: 570px;background-color:wheat " *ngIf="note.pinned" >
-   
-    
+  <mat-card class="moveCard">
     <mat-card-header class="head">
       <mat-card-title (click)=openDialog(note)>
         {{note.title}}
@@ -12,7 +8,6 @@
         <mat-icon>colorize</mat-icon>
       </button>
     </mat-card-header>
-
     <mat-card-content (click)=openDialog(note)>
       {{note.description}}
     </mat-card-content>
@@ -29,20 +24,16 @@
       <button mat-icon-button matTooltip="Add image">
         <mat-icon>image</mat-icon>
       </button>
-      <button  mat-icon-button (click)=sendToArchive(note) matTooltip="Archive">
+      <button mat-icon-button (click)=sendToArchive(note) matTooltip="Archive">
         <mat-icon>archive</mat-icon>
       </button>
 
       <button mat-icon-button [matMenuTriggerFor]="more" matTooltip="more">
         <mat-icon>more_vert</mat-icon>
       </button>
-
-     
       <mat-menu #more="matMenu" class="morecard">
         <button mat-button (click)=deleteNote(note)>Delete Note</button>
-</mat-menu>
-      
-      
+      </mat-menu>
       <button mat-icon-button matTooltip="undo">
         <mat-icon>undo</mat-icon>
       </button>
@@ -50,8 +41,5 @@
         <mat-icon>redo</mat-icon>
       </button>
     </div>
-
- 
   </mat-card>
-
 </div>

@@ -28,3 +28,8 @@ button {
     margin: auto;
   }
   
+  .imageMove{
+
+    width: 200px;
+    height: 200px;
+  }

@@ -14,6 +14,8 @@ import { Note } from '../core/model/note/note';
 export class NotesearchbodyComponent implements OnInit {
 
   @Output() eventCreate = new EventEmitter();
+ 
+ 
   public buttons = [{
     name: 'notifications',
     tooltip: 'notifications'
@@ -25,7 +27,7 @@ export class NotesearchbodyComponent implements OnInit {
   {
     name: 'person_add',
     tooltip: 'collaborator'
-  },{
+  }, {
     name: 'image',
     tooltip: 'image upload'
   },
@@ -40,11 +42,11 @@ export class NotesearchbodyComponent implements OnInit {
   {
     name: 'undo',
     tooltip: 'undo'
-  },{
+  }, {
     name: 'redo',
     tooltip: 'redo'
   }]
-  
+
 
 
   public showHeader = true;
@@ -60,26 +62,18 @@ export class NotesearchbodyComponent implements OnInit {
     private httpUtil: HttpService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-   
+
     this.createNoteForm = this.formBuilder.group({
       title: [''],
       description: ['']
     });
-   
+
   }
 
 
   get f() { return this.createNoteForm.controls; }
-  
-  // getNotes() {
-  //   console.log("token", this.mytoken);
-  //   this.noteService.retrieveNotes(this.mytoken).subscribe(newNote => {
-  //     this.notes = newNote;
-  //   }
-  //   )
-  // }
-  
-  onSubmit(note) {
+
+  public onSubmit(note) {
     this.submitted = true;
 
     if (this.createNoteForm.invalid) {
@@ -88,8 +82,6 @@ export class NotesearchbodyComponent implements OnInit {
     if (this.createNoteForm.value.title === "" && this.createNoteForm.value.description === "") {
       return;
     }
-    console.log(this.mytoken);
-    console.log(note);
     this.noteService.createNote(note).subscribe(response => {
       this.eventCreate.emit(true);
       this.snackBar.open("success", "note created", {
@@ -98,7 +90,7 @@ export class NotesearchbodyComponent implements OnInit {
     })
   }
 
-  
-  }
+
+}
 
 
