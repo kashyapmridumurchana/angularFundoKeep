@@ -1,6 +1,6 @@
 <div fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center"></div>
 <div class="move" *ngFor="let note of notes | noteFilter: 'archive'">
-  <mat-card class="move" >
+  <mat-card class="move">
     <mat-card-header>
       <mat-card-title (click)=openDialog(note)>
         {{note.title}}
@@ -9,6 +9,13 @@
     <mat-card-content (click)=openDialog(note)>
       {{note.description}}
     </mat-card-content>
+    <mat-chip-list #chipList>
+      <mat-chip *ngFor="let label of note.labels" [selectable]="selectable" [removable]="removable"
+        (removed)="remove(note,label.labelId)">
+        {{label.labelName}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
     <div>
       <button mat-icon-button matTooltip="Remind me">
         <mat-icon>add_alert</mat-icon>
@@ -30,6 +37,7 @@
       </button>
       <mat-menu #more="matMenu" class="morecard">
         <button mat-button (click)=deleteNote(note)>Delete Note</button>
+        <app-add-note-label [note]="note" (addNoteLabel)="onUpdateNoteLabel($event)"></app-add-note-label>
       </mat-menu>
     </div>
   </mat-card>

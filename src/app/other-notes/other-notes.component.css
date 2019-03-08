@@ -17,10 +17,19 @@
   
     right: 10px;
   }
-  
+ 
   .resizeMatCard{
-  
+    
     width: 570px;
   
   
+  } 
+  .mat-card:hover{
+    background-color: burlywood
   }
+  /* .resizeCard{
+    padding:20px;
+display: flex;
+justify-content: space-evenly;
+    width: auto;
+  } */ 

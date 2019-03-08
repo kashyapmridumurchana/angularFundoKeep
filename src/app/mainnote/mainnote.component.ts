@@ -35,104 +35,29 @@ export class MainnoteComponent implements OnInit {
     })
   }
 
-  // public openDialog(note): void {
-  //   const dialogRef = this.dialog.open(UpdateNoteComponent, {
-  //     width: '550px',
-  //     data: note
-  //   });
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     this.noteService.updateNote(note).subscribe(response => {
-  //       this.snackBar.open("Note updated successfully", "OK", {
-  //         duration: 3000,
-  //       });
-  //     })
-  //   });
-  // }
-
-  // public deleteNote(note) {
-  //   var newNote = {
-  //     ...note,
-  //     inTrash: true,
-  //   }
-  //   this.noteService.updateNote(newNote).subscribe(response => {
-  //     this.snackBar.open("Sent to Trash ", "OK", {
-  //       duration: 3000,
-  //     });
-  //     this.getNotes();
-  //   },
-  //     (error) => {
-  //       console.log('Error while deleting note::->', error);
-  //     })
-  // }
-
-
-  // public sendToArchive(note) {
-  //   var newNote = {
-
-  //     ...note,
-  //     archive: true
-  //   }
-  //   this.noteService.updateNote(newNote).subscribe(response => {
-  //     this.snackBar.open("Sent to Archive ", "OK", {
-  //       duration: 3000,
-  //     });
-  //     this.getNotes();
-  //   },
-  //     (error) => {
-  //       console.log('Error while archiving note::->', error);
-  //     })
-  // }
-
-  // public moveToPin(note) {
-  //   var newNote = {
-
-  //     ...note,
-  //     pinned: true
-  //   }
-  //   this.noteService.updateNote(newNote).subscribe(response => {
-  //     this.snackBar.open("Pinned", "OK", {
-  //       duration: 3000,
-  //     });
-  //     this.getNotes();
-  //   },
-  //     (error) => {
-  //       console.log('Error while pinning note::->', error);
-  //     })
-  // }
 
   public refresh(event) {
     if (event) {
       this.getNotes();
     }
   }
-
-  // public remove(note, label) {
-  //   this.noteService.removeLabelFromNote(note, label).subscribe(response => {
-  //     this.snackBar.open("Label removed successfully from note", "OK", {
-  //       duration: 3000,
-  //     });
-  //     this.getNotes();
-  //   },
-  //     (error) => {
-  //       console.log(error);
-
-  //     })
-  // }
+  onUpdateNote(data) {
+    this.updateNote(data.note)
+  }
 
 
+  updateNote(newNote) {
+    this.noteService.updateNote(newNote).subscribe(response => {
+      this.getNotes();
+      this.snackBar.open("Done ", "OK", {
+        duration: 3000,
+      });
+    },
+      (error) => {
+        console.log('Error in operation::->', error);
+      })
+  }
 
-
-  // addLabel(note,label)
-  // {
-  //   this.noteService.addLabelToNote(note,label).subscribe(response =>{
-  //     this.snackBar.open("Label added successfully to note", "OK", {
-  //       duration: 3000,
-  //     });
-  //   },
-  //   (error) => {
-  //     console.log(error);
-
-  //   })
 
 
 }

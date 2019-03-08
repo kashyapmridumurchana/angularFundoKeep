@@ -47,6 +47,9 @@ deleteServiceForNoteDelete(url,header){
   return this.http.delete<any>(url,header);
 }
 
+putServiceWithParam(url,object){
+  return this.http.put<any>(url,object,{observe : 'response'});
+}
 
 
 }

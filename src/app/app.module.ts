@@ -21,6 +21,7 @@ import { HeaderComponent } from './header/header.component';
 import { EditLabelsComponent } from './edit-labels/edit-labels.component';
 import { NoteFilterPipe } from './pipe/note-filter.pipe';
 import { OtherNotesComponent } from './other-notes/other-notes.component';
+import { AddNoteLabelComponent } from './add-note-label/add-note-label.component';
 
 
 
@@ -44,6 +45,7 @@ import { OtherNotesComponent } from './other-notes/other-notes.component';
     EditLabelsComponent,
     NoteFilterPipe,
     OtherNotesComponent,
+    AddNoteLabelComponent,
     
   ],
   imports: [

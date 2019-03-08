@@ -118,17 +118,10 @@ removeLabelFromNote(noteId, labelId) {
   )
 }
 
-// addLabelToNote(noteId, labelId) {
-//   return this.httpUtil.putServiceWithParams(`${environment.note_url}addnotelabel`, {
-//     params: {
-//       noteId: noteId,
-//       labelId: labelId,
-//     },
-//     observe: 'response'
-//   }
-//   )
-// }
+addLabelToNote(noteId, label) {
+  return this.httpUtil.putServiceWithParam(`${environment.note_url}addnotelabel/`+noteId,label)
+   
 
-
+}
 
 }

@@ -3,10 +3,9 @@
 </div>
 
 <div>
-  <app-pinned-note [notes]="notes | noteFilter:'pinned'" (eventPin)="refresh($event)"></app-pinned-note>
+  <app-pinned-note [notes]="notes | noteFilter:'pinned'" (eventPin)="onUpdateNote($event)"></app-pinned-note>
 </div>
 
- <div >
-      <app-other-notes [notes]="notes | noteFilter " (eventPin)="refresh($event)"></app-other-notes>
-</div> 
-
+<div>
+  <app-pinned-note [notes]="notes | noteFilter" (eventPin)="onUpdateNote($event)"></app-pinned-note>
+</div>

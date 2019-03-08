@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { enableBindings } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
   abc = false;
   def = false;
-
+  
   @Output() toggle = new EventEmitter();
   public toggleNav: Subject<any> = new Subject();
   public btnClick: Subject<any> = new Subject();
@@ -26,9 +27,11 @@ export class HeaderComponent implements OnInit {
   public hideButton() {
 
     this.abc = true;
+    
   }
   public hideButton1() {
     this.abc = false;
+   
   }
 
   public toggleOnClick() {

@@ -11,3 +11,7 @@ mat-sidenav {
     align-content: center;
     width: 50px;
 }
+.mat-menu-item:hover{
+    background-color: burlywood
+    
+}

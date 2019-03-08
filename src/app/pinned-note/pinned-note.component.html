@@ -4,13 +4,23 @@
       <mat-card-title (click)=openDialog(note)>
         {{note.title}}
       </mat-card-title>
-      <button class="butt" mat-icon-button (click)=unPin(note) matTooltip="Unpin">
+      <button *ngIf="note.pinned" class="butt" mat-icon-button (click)="unPin('unpinned',note)" matTooltip="Unpin">
+        <mat-icon>bookmark</mat-icon>
+      </button>
+      <button *ngIf="!note.pinned" class="butt" mat-icon-button (click)="unPin('pinned',note)" matTooltip="pin">
         <mat-icon>colorize</mat-icon>
       </button>
     </mat-card-header>
     <mat-card-content (click)=openDialog(note)>
       {{note.description}}
     </mat-card-content>
+    <mat-chip-list #chipList>
+      <mat-chip *ngFor="let label of note.labels" [selectable]="selectable" [removable]="removable"
+        (removed)="remove(note,label.labelId)">
+        {{label.labelName}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
     <div>
       <button mat-icon-button matTooltip="Remind me">
         <mat-icon>add_alert</mat-icon>
@@ -33,6 +43,7 @@
       </button>
       <mat-menu #more="matMenu" class="morecard">
         <button mat-button (click)=deleteNote(note)>Delete Note</button>
+        <app-add-note-label [note]="note" (addNoteLabel)="onUpdateNoteLabel($event)"></app-add-note-label>
       </mat-menu>
       <button mat-icon-button matTooltip="undo">
         <mat-icon>undo</mat-icon>

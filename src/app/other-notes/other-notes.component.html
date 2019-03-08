@@ -1,65 +1,61 @@
-
-<div>
-    <div class="move" *ngFor="let note of notes">
-      <mat-card class="resizeMatCard" >
-        <mat-card-header class="head">
-          <mat-card-title (click)=openDialog(note)>
-            {{note.title}}
-          </mat-card-title>
-          <button class="butt" mat-icon-button (click)=moveToPin(note) matTooltip="pin">
-            <mat-icon>colorize</mat-icon>
-          </button>
-        </mat-card-header>
-        <mat-card-content (click)=openDialog(note)>
-          {{note.description}}
-        </mat-card-content>
-        <mat-chip-list #chipList>
-          <mat-chip *ngFor="let label of note.labels" [selectable]="selectable" [removable]="removable"
-            (removed)="remove(note.noteId,label.labelId)">
-            {{label.labelName}}
-            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-          </mat-chip>
-        </mat-chip-list>
-        <div>
-          <button mat-icon-button matTooltip="Remind me">
-            <mat-icon>add_alert</mat-icon>
-          </button>
-          <button mat-icon-button matTooltip="Collaborator">
-            <mat-icon>person_add</mat-icon>
-          </button>
-          <button mat-icon-button matTooltip="Change color">
-            <mat-icon>palette</mat-icon>
-          </button>
-          <button mat-icon-button matTooltip="Add image">
-            <mat-icon>image</mat-icon>
-          </button>
+<!-- <div>
 
 
-          <button  mat-icon-button (click)=sendToArchive(note) matTooltip="Archive">
-            <mat-icon>archive</mat-icon>
-          </button>
-          <button mat-icon-button [matMenuTriggerFor]="more" matTooltip="more">
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #more="matMenu" class="morecard">
-            <div><button mat-button (click)=deleteNote(note)>Delete Note</button></div>
-            <div><button mat-button  (click)=$event.stopPropagation() [matMenuTriggerFor]="moreOption">
-                Add Label
-              </button></div>
-            </mat-menu>
-          <mat-menu #moreOption="matMenu">
-            <div *ngFor="let label of labels" >
-       <mat-checkbox   (click)=$event.stopPropagation()>
+  <div class="move" *ngFor="let note of notes">
+
+    <mat-card class="resizeMatCard">
+      <mat-card-header class="head">
+        <mat-card-title (click)=openDialog(note)>
+          {{note.title}}
+        </mat-card-title>
+        <button class="butt" mat-icon-button (click)=moveToPin(note) matTooltip="pin">
+          <mat-icon>colorize</mat-icon>
+        </button>
+      </mat-card-header>
+      <mat-card-content (click)=openDialog(note)>
+        {{note.description}}
+      </mat-card-content>
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let label of note.labels" [selectable]="selectable" [removable]="removable"
+          (removed)="remove(note.noteId,label.labelId)">
           {{label.labelName}}
-          </mat-checkbox></div>
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+      <div>
+        <button mat-icon-button matTooltip="Remind me">
+          <mat-icon>add_alert</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Collaborator">
+          <mat-icon>person_add</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Change color">
+          <mat-icon>palette</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Add image">
+          <mat-icon>image</mat-icon>
+        </button>
+
+
+        <button mat-icon-button (click)=sendToArchive(note) matTooltip="Archive">
+          <mat-icon>archive</mat-icon>
+        </button>
+        <button mat-icon-button [matMenuTriggerFor]="more" matTooltip="more">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #more="matMenu" class="morecard">
+          <div><button mat-button (click)=deleteNote(note)>Delete Note</button></div>
+          <app-add-note-label [note]="note" (addNoteLabel)="onUpdateNoteLabel($event)"></app-add-note-label>
         </mat-menu>
-          <button mat-icon-button matTooltip="undo">
-            <mat-icon>undo</mat-icon>
-          </button>
-          <button mat-icon-button matTooltip="redo">
-            <mat-icon>redo</mat-icon>
-          </button>
-        </div>
-      </mat-card>
-    </div>
+        <button mat-icon-button matTooltip="undo">
+          <mat-icon>undo</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="redo">
+          <mat-icon>redo</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+
   </div>
+
+</div> -->
