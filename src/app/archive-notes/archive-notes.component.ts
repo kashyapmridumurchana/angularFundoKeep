@@ -9,7 +9,7 @@ import { NotesearchbodyComponent } from '../notesearchbody/notesearchbody.compon
 @Component({
   selector: 'app-archive-notes',
   templateUrl: './archive-notes.component.html',
-  styleUrls: ['./archive-notes.component.css']
+  styleUrls: ['./archive-notes.component.scss']
 })
 export class ArchiveNotesComponent implements OnInit {
 

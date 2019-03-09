@@ -7,7 +7,7 @@ import { UpdateNoteComponent } from '../update-note/update-note.component';
 @Component({
   selector: 'app-trashed-notes',
   templateUrl: './trashed-notes.component.html',
-  styleUrls: ['./trashed-notes.component.css']
+  styleUrls: ['./trashed-notes.component.scss']
 })
 export class TrashedNotesComponent implements OnInit {
 
@@ -47,6 +47,7 @@ export class TrashedNotesComponent implements OnInit {
 
   public deleteNoteForever(note) {
     this.noteService.deleteNote(note.noteId).subscribe(response => {
+      this.getNotes();
       this.snackBar.open("deleted Note forever", "OK", { duration: 2000 });
     }), error => {
       this.snackBar.open("error", "error to retrieve notes", { duration: 2000 });

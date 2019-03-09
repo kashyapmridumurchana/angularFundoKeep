@@ -4,13 +4,14 @@ import { Note } from '../core/model/note/note';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { MatDialog, MatSnackBar, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Subject } from 'rxjs';
+import { HelperKeepService } from '../core/service/helper-keep.service';
 
 
 
 @Component({
   selector: 'app-mainnote',
   templateUrl: './mainnote.component.html',
-  styleUrls: ['./mainnote.component.css']
+  styleUrls: ['./mainnote.component.scss']
 })
 export class MainnoteComponent implements OnInit {
 
@@ -18,15 +19,18 @@ export class MainnoteComponent implements OnInit {
   @Input() public abc: Subject<any>;
   public mytoken = '';
   public notes: Note[] = [];
-  // selectable = true;
-  // removable = true;
+  public grid = false;
+
 
   constructor(private noteService: NoteService, private dialog: MatDialog,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar, private helperService: HelperKeepService) { }
 
   ngOnInit() {
     this.mytoken = localStorage.getItem('token');
     this.getNotes();
+    this.helperService.getTheme().subscribe((resp) =>
+      this.grid = resp
+    );
   }
 
   public getNotes() {
@@ -34,6 +38,9 @@ export class MainnoteComponent implements OnInit {
       this.notes = newNote;
     })
   }
+
+
+
 
 
   public refresh(event) {

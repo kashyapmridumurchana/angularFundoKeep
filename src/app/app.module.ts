@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import {AppMaterialModule} from './app-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegistrationComponent } from './registration/registration.component';
-import { MatCardModule,MatExpansionModule } from '@angular/material';
+import { MatCardModule,MatExpansionModule, MatButtonToggleChange } from '@angular/material';
 import { NotesearchbodyComponent } from './notesearchbody/notesearchbody.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
@@ -22,6 +22,8 @@ import { EditLabelsComponent } from './edit-labels/edit-labels.component';
 import { NoteFilterPipe } from './pipe/note-filter.pipe';
 import { OtherNotesComponent } from './other-notes/other-notes.component';
 import { AddNoteLabelComponent } from './add-note-label/add-note-label.component';
+import { SearchPipePipe } from './pipe/search-pipe.pipe';
+import { TestingWorkComponent } from './testing-work/testing-work.component';
 
 
 
@@ -46,6 +48,8 @@ import { AddNoteLabelComponent } from './add-note-label/add-note-label.component
     NoteFilterPipe,
     OtherNotesComponent,
     AddNoteLabelComponent,
+    SearchPipePipe,
+    TestingWorkComponent,
     
   ],
   imports: [

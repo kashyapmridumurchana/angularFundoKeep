@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import{ MatButtonModule,MatRippleModule,MatSelectModule,MatInputModule, MatToolbarModule, MatMenuModule,MatSidenavModule, MatListModule, MatDividerModule, MatTooltipModule, MatNativeDateModule, MatExpansionModule, MatGridListModule, MatSnackBarModule, MatSlideToggleModule, MatChipsModule, MatCheckboxModule,  
+import{ MatButtonModule,MatRippleModule,MatSelectModule,MatInputModule,
+   MatToolbarModule, MatMenuModule,MatSidenavModule, MatListModule, MatDividerModule,
+    MatTooltipModule, MatNativeDateModule, MatExpansionModule, MatGridListModule,
+     MatSnackBarModule, MatSlideToggleModule, MatChipsModule, MatCheckboxModule,
+      
  } from '@angular/material';
 import {MatIconModule} from '@angular/material/icon'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,7 +13,6 @@ import { MatCardModule} from'@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog';
-
 
 @NgModule({
   declarations: [],
@@ -40,7 +43,7 @@ import {MatDialogModule} from '@angular/material/dialog';
    MatSlideToggleModule,
    MatDialogModule,
    MatChipsModule,
-   MatCheckboxModule
+   MatCheckboxModule,
 
    
    
@@ -72,7 +75,7 @@ import {MatDialogModule} from '@angular/material/dialog';
    MatSlideToggleModule,
    MatDialogModule,
    MatChipsModule,
-   MatCheckboxModule
+   MatCheckboxModule,
   
   ]
 })

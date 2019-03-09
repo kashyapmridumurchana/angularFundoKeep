@@ -7,13 +7,13 @@ import { Label } from '../core/model/label/label';
 @Component({
   selector: 'app-add-note-label',
   templateUrl: './add-note-label.component.html',
-  styleUrls: ['./add-note-label.component.css']
+  styleUrls: ['./add-note-label.component.scss']
 })
 export class AddNoteLabelComponent implements OnInit {
 
   @Input() note
   @Output() addNoteLabel = new EventEmitter();
-
+  filter='';
 
   public mytoken = '';
   public labels: Label[] = [];

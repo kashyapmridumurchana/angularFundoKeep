@@ -1,56 +1,58 @@
-<div class="move" *ngFor="let note of notes">
-  <mat-card class="moveCard">
-    <mat-card-header class="head">
-      <mat-card-title (click)=openDialog(note)>
-        {{note.title}}
-      </mat-card-title>
-      <button *ngIf="note.pinned" class="butt" mat-icon-button (click)="unPin('unpinned',note)" matTooltip="Unpin">
-        <mat-icon>bookmark</mat-icon>
-      </button>
-      <button *ngIf="!note.pinned" class="butt" mat-icon-button (click)="unPin('pinned',note)" matTooltip="pin">
-        <mat-icon>colorize</mat-icon>
-      </button>
-    </mat-card-header>
-    <mat-card-content (click)=openDialog(note)>
-      {{note.description}}
-    </mat-card-content>
-    <mat-chip-list #chipList>
-      <mat-chip *ngFor="let label of note.labels" [selectable]="selectable" [removable]="removable"
-        (removed)="remove(note,label.labelId)">
-        {{label.labelName}}
-        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-      </mat-chip>
-    </mat-chip-list>
-    <div>
-      <button mat-icon-button matTooltip="Remind me">
-        <mat-icon>add_alert</mat-icon>
-      </button>
-      <button mat-icon-button matTooltip="Collaborator">
-        <mat-icon>person_add</mat-icon>
-      </button>
-      <button mat-icon-button matTooltip="Change color">
-        <mat-icon>palette</mat-icon>
-      </button>
-      <button mat-icon-button matTooltip="Add image">
-        <mat-icon>image</mat-icon>
-      </button>
-      <button mat-icon-button (click)=sendToArchive(note) matTooltip="Archive">
-        <mat-icon>archive</mat-icon>
-      </button>
+<div class="gk" [ngClass]="grid ? 'gk-grid-view': 'gk-list-view'">
+  <div class="move" *ngFor="let note of notes">
+    <mat-card class="moveCard" >
+      <mat-card-header class="head">
+        <mat-card-title (click)=openDialog(note)>
+          {{note.title}}
+        </mat-card-title>
+        <button *ngIf="note.pinned" class="butt" mat-icon-button (click)="unPin('unpinned',note)" matTooltip="Unpin">
+          <mat-icon>bookmark</mat-icon>
+        </button>
+        <button *ngIf="!note.pinned" class="butt" mat-icon-button (click)="unPin('pinned',note)" matTooltip="pin">
+          <mat-icon>colorize</mat-icon>
+        </button>
+      </mat-card-header>
+      <mat-card-content (click)=openDialog(note)>
+        {{note.description}}
+      </mat-card-content>
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let label of note.labels" [selectable]="selectable" [removable]="removable"
+          (removed)="remove(note,label.labelId)">
+          {{label.labelName}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+      <div>
+        <button mat-icon-button matTooltip="Remind me">
+          <mat-icon>add_alert</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Collaborator">
+          <mat-icon>person_add</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Change color">
+          <mat-icon>palette</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Add image">
+          <mat-icon>image</mat-icon>
+        </button>
+        <button mat-icon-button (click)=sendToArchive(note) matTooltip="Archive">
+          <mat-icon>archive</mat-icon>
+        </button>
 
-      <button mat-icon-button [matMenuTriggerFor]="more" matTooltip="more">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #more="matMenu" class="morecard">
-        <button mat-button (click)=deleteNote(note)>Delete Note</button>
-        <app-add-note-label [note]="note" (addNoteLabel)="onUpdateNoteLabel($event)"></app-add-note-label>
-      </mat-menu>
-      <button mat-icon-button matTooltip="undo">
-        <mat-icon>undo</mat-icon>
-      </button>
-      <button mat-icon-button matTooltip="redo">
-        <mat-icon>redo</mat-icon>
-      </button>
-    </div>
-  </mat-card>
+        <button mat-icon-button [matMenuTriggerFor]="more" matTooltip="more">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #more="matMenu" class="morecard">
+          <button mat-button (click)=deleteNote(note)>Delete Note</button>
+          <app-add-note-label [note]="note" (addNoteLabel)="onUpdateNoteLabel($event)"></app-add-note-label>
+        </mat-menu>
+        <button mat-icon-button matTooltip="undo">
+          <mat-icon>undo</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="redo">
+          <mat-icon>redo</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
 </div>

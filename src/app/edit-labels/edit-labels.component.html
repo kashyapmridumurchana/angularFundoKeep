@@ -1,8 +1,8 @@
 <p> <b>Edit Labels </b></p>
 
 <div class="area" fxLayout="row">
-    <mat-icon>clear</mat-icon>
-    <div  data-text="Create new label" contenteditable="true" class="input" id="labelName"  #labelName>
+    <mat-icon (click)=closeClick()>clear</mat-icon>
+    <div data-text="Create new label"  contenteditable="true" class="input" id="labelName"  #labelName>
     </div>
     <mat-icon (click)="createLabel(labelName)">done</mat-icon>
 </div>

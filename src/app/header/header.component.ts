@@ -1,38 +1,34 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
-import { enableBindings } from '@angular/core/src/render3';
+import { HelperKeepService } from '../core/service/helper-keep.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
 
 
-  abc = false;
-  def = false;
+  grid = false;
   
   @Output() toggle = new EventEmitter();
   public toggleNav: Subject<any> = new Subject();
   public btnClick: Subject<any> = new Subject();
-  @Output() toggle1 = new EventEmitter();
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private helperService:HelperKeepService) { }
 
   ngOnInit() {
   }
 
-  public hideButton() {
+  
 
-    this.abc = true;
-    
+  public hideButton() {
+    this.grid = !this.grid;
+    this.helperService.setTheme(this.grid);
   }
-  public hideButton1() {
-    this.abc = false;
-   
-  }
+
 
   public toggleOnClick() {
     this.toggle.emit();

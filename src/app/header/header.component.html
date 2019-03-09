@@ -25,11 +25,11 @@
       <a mat-button routerLink="/header" routerLinkActive="active" matTooltip="Refresh">
         <mat-icon>refresh</mat-icon>
       </a>
-      <button *ngIf="!abc " (click)=hideButton() (clickButton)=onClickBtn() mat-icon-button>
+      <button *ngIf="!grid " (click)=hideButton() (clickButton)=onClickBtn() mat-icon-button>
         <mat-icon>view_module</mat-icon>
       </button>
 
-      <button *ngIf="abc  " (click)=hideButton1() mat-icon-button>
+      <button *ngIf="grid" (click)=hideButton() mat-icon-button>
         <mat-icon>view_agenda</mat-icon>
       </button>
 

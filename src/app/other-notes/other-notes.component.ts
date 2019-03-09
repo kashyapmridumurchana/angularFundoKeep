@@ -9,7 +9,7 @@ import { enableBindings } from '@angular/core/src/render3';
 @Component({
   selector: 'app-other-notes',
   templateUrl: './other-notes.component.html',
-  styleUrls: ['./other-notes.component.css']
+  styleUrls: ['./other-notes.component.scss']
 })
 export class OtherNotesComponent implements OnInit {
   @Input() notes

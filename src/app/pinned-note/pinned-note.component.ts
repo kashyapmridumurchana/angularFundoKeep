@@ -10,11 +10,12 @@ import { UpdateNoteComponent } from '../update-note/update-note.component';
 @Component({
   selector: 'app-pinned-note',
   templateUrl: './pinned-note.component.html',
-  styleUrls: ['./pinned-note.component.css']
+  styleUrls: ['./pinned-note.component.scss']
 })
 export class PinnedNoteComponent implements OnInit {
 
   @Input() notes
+  @Input() grid = false;
   @Output() eventPin = new EventEmitter();
 
   public mytoken = '';

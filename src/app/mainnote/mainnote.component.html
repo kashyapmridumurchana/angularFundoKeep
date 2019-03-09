@@ -1,11 +1,15 @@
-<div fxFlex="40%">
-  <app-notesearchbody (eventCreate)="refresh($event)"></app-notesearchbody>
+<div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
+  <div fxFlex="40%">
+    <app-notesearchbody (eventCreate)="refresh($event)"></app-notesearchbody>
+  </div>
+<div class="note-container">
+    <div fxFlex="40%">
+        <app-pinned-note [notes]="notes | noteFilter:'pinned'" [grid]="grid" (eventPin)="onUpdateNote($event)">
+        </app-pinned-note>
+      </div>
+    
+      <div fxFlex="40%">
+        <app-pinned-note [notes]="notes | noteFilter" [grid]="grid" (eventPin)="onUpdateNote($event)"></app-pinned-note>
+      </div>
 </div>
-
-<div>
-  <app-pinned-note [notes]="notes | noteFilter:'pinned'" (eventPin)="onUpdateNote($event)"></app-pinned-note>
-</div>
-
-<div>
-  <app-pinned-note [notes]="notes | noteFilter" (eventPin)="onUpdateNote($event)"></app-pinned-note>
 </div>
