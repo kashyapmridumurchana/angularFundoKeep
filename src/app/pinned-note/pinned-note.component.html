@@ -1,7 +1,7 @@
 <div class="gk" [ngClass]="grid ? 'gk-grid-view': 'gk-list-view'">
-  <div class="move" *ngFor="let note of notes">
-    <mat-card class="moveCard" >
-      <mat-card-header class="head">
+  <div *ngFor="let note of notes">
+    <mat-card  >
+      <mat-card-header >
         <mat-card-title (click)=openDialog(note)>
           {{note.title}}
         </mat-card-title>
@@ -42,7 +42,7 @@
         <button mat-icon-button [matMenuTriggerFor]="more" matTooltip="more">
           <mat-icon>more_vert</mat-icon>
         </button>
-        <mat-menu #more="matMenu" class="morecard">
+        <mat-menu #more="matMenu" >
           <button mat-button (click)=deleteNote(note)>Delete Note</button>
           <app-add-note-label [note]="note" (addNoteLabel)="onUpdateNoteLabel($event)"></app-add-note-label>
         </mat-menu>

@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 })
 export class HelperKeepService {
   public theme$: Subject<any> = new Subject();
+  public search$: Subject<any> = new Subject();
   
   constructor() { }
   
@@ -16,4 +17,16 @@ export class HelperKeepService {
   public getTheme() {
     return this.theme$;
   }
+
+
+public setSearch(searchFound:string){
+  this.search$.next(searchFound);
 }
+
+public getSearch()
+{
+  return this.search$;
+}
+
+}
+

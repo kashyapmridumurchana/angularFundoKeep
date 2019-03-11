@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NoteService } from '../core/service/note/note.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { Note } from '../core/model/note/note';
@@ -13,6 +13,7 @@ export class TrashedNotesComponent implements OnInit {
 
   public mytoken = '';
   public notes: Note[] = [];
+  @Input() grid = false;
 
 
   constructor(private noteService: NoteService, private dialog: MatDialog, private snackBar: MatSnackBar) { }

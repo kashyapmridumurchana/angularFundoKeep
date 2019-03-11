@@ -1,5 +1,5 @@
 <div class="move" *ngFor="let note of notes | noteFilter:'inTrash'">
-  <mat-card class="resizeMAtCard"  >
+  <mat-card class="resizeMAtCard">
     <mat-card-header>
       <mat-card-title (click)=openDialog(note)>
         {{note.title}}

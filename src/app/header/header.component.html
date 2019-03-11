@@ -14,22 +14,21 @@
       &nbsp;
       &nbsp;
       &nbsp;
-
       <!-- Search form -->
       <div class="slinput" ng-init="">
-        <i class="fa fa-search left-icon"></i>
-        <input type="search" placeholder="Search here" ng-model="searchInputVal" />
+        
+        <input type="search" placeholder="Search here" [(ngModel)]="searchInputVal" (click)=searchText()/>
         <i ng-class="{'fa' : true, 'fa-close' : true, 'right-icon' : true, active : (searchInputVal.length > 0)}"
           ng-click="searchInputVal = ''"></i>
       </div>
       <a mat-button routerLink="/header" routerLinkActive="active" matTooltip="Refresh">
         <mat-icon>refresh</mat-icon>
       </a>
-      <button *ngIf="!grid " (click)=hideButton() (clickButton)=onClickBtn() mat-icon-button>
+      <button *ngIf="!grid " (click)=hideButton() (clickButton)=onClickBtn() mat-icon-button  matTooltip="Grid">
         <mat-icon>view_module</mat-icon>
       </button>
 
-      <button *ngIf="grid" (click)=hideButton() mat-icon-button>
+      <button *ngIf="grid" (click)=hideButton() mat-icon-button  matTooltip="List">
         <mat-icon>view_agenda</mat-icon>
       </button>
 
@@ -141,7 +140,7 @@
         <mat-icon>account_circle</mat-icon>
       </button>
       <mat-menu #user="matMenu">
-        <button mat-menu-item >
+        <button mat-menu-item>
           <mat-icon>logout</mat-icon>
           <a mat-button (click)=logout()>
             <span>Logout</span>
