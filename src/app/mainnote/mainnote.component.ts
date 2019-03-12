@@ -31,6 +31,15 @@ export class MainnoteComponent implements OnInit {
     this.helperService.getTheme().subscribe((resp) =>
       this.grid = resp
     );
+    this.helperService.getSearch().subscribe((query) => {
+      console.log('response', query);
+      if(!query){
+        this.getNotes(); 
+        return;
+      }
+      this.notes = this.notes.filter((item) => 
+      item.title.toLowerCase().includes(query.toLowerCase()));
+    });
   }
 
   public getNotes() {

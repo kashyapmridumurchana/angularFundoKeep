@@ -12,7 +12,6 @@ import { TrashedNotesComponent } from './trashed-notes/trashed-notes.component';
 import { HeaderComponent } from './header/header.component';
 import { EditLabelsComponent } from './edit-labels/edit-labels.component';
 import { AuthGuard } from './guard/auth.guard';
-import { SearchNoteComponent } from './search-note/search-note.component';
 
 const appRoutes: Routes = [
  
@@ -24,7 +23,6 @@ const appRoutes: Routes = [
     { path: '', redirectTo: 'mainnote', pathMatch: 'full' },
     { path: 'archivenote', component:ArchiveNotesComponent},
     { path: 'trashednote', component:TrashedNotesComponent},
-    { path: 'searchnote', component:SearchNoteComponent},
     { path: 'editlabel', component:EditLabelsComponent},
     { path: 'mainnote', component: MainnoteComponent }
   ]

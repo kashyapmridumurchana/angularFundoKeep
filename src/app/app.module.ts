@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -24,7 +23,6 @@ import { AddNoteLabelComponent } from './add-note-label/add-note-label.component
 import { SearchPipePipe } from './pipe/search-pipe.pipe';
 import { TestingWorkComponent } from './testing-work/testing-work.component';
 import { NoteSearchPipe } from './pipe/note-search.pipe';
-import { SearchNoteComponent } from './search-note/search-note.component';
 
 
 
@@ -50,7 +48,6 @@ import { SearchNoteComponent } from './search-note/search-note.component';
     SearchPipePipe,
     TestingWorkComponent,
     NoteSearchPipe,
-    SearchNoteComponent,
     
   ],
   imports: [

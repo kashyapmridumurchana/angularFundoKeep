@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
   public searchText()
   {
     this.helperService.setSearch(this.searchInputVal);
-    this.router.navigate(['header/searchnote'])
+    
   }
   
 
