@@ -5,6 +5,9 @@ import { MatDialog, MatSnackBar } from '@angular/material';
 import { NotesearchbodyComponent } from '../notesearchbody/notesearchbody.component';
 import { Label } from '../core/model/label/label';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
+import { CollaboratorComponent } from '../collaborator/collaborator.component';
+import { UserService } from '../core/service/user/user.service';
+import { user } from '../core/model/user/user';
 
 
 @Component({
@@ -17,16 +20,22 @@ export class PinnedNoteComponent implements OnInit {
   @Input() notes
   @Input() grid = false;
   @Output() eventPin = new EventEmitter();
+  user: user
 
   public mytoken = '';
   public selectable = true;
   public removable = true;
   public labels: Label[] = [];
-  constructor(private noteService: NoteService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
+  constructor(private userService: UserService, private noteService: NoteService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
 
   ngOnInit() {
     this.mytoken = localStorage.getItem('token');
+    this.userService.userDetails().subscribe(resp => {
+      this.user = resp;
+      console.log('user-->', resp);
+    })
+
     // this.getLabels();
   }
 
@@ -58,32 +67,30 @@ export class PinnedNoteComponent implements OnInit {
 
 
   public sendToArchive(note) {
-    note.archive=1;
-    note.pinned=0;
+    note.archive = 1;
+    note.pinned = 0;
     var data = { note };
     this.eventPin.emit(data);
   }
 
 
   public deleteNote(note) {
-    note.inTrash=1;
+    note.inTrash = 1;
     var data = { note };
     this.eventPin.emit(data);
   }
 
-  public unPin(key,note) {
-    note.pinned= key === 'pinned'? 1:0 ;
+  public unPin(key, note) {
+    note.pinned = key === 'pinned' ? 1 : 0;
     var data = { note };
     this.eventPin.emit(data);
   }
 
   public remove(note, label) {
     this.noteService.removeLabelFromNote(note.noteId, label).subscribe(response => {
-      var data = {note}
+      var data = { note }
       this.eventPin.emit(data);
-      // this.snackBar.open("Label removed successfully from note", "OK", {
-      //   duration: 3000,
-      // });
+     
     },
       (error) => {
         console.log(error);
@@ -91,4 +98,14 @@ export class PinnedNoteComponent implements OnInit {
       })
   }
 
+  public collaboratorAdd(){
+      const dialogRef = this.dialog.open(CollaboratorComponent, {
+        width: '550px',
+        data: this.user
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
+
+    }
 }

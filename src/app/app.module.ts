@@ -21,8 +21,10 @@ import { EditLabelsComponent } from './edit-labels/edit-labels.component';
 import { NoteFilterPipe } from './pipe/note-filter.pipe';
 import { AddNoteLabelComponent } from './add-note-label/add-note-label.component';
 import { SearchPipePipe } from './pipe/search-pipe.pipe';
-import { TestingWorkComponent } from './testing-work/testing-work.component';
 import { NoteSearchPipe } from './pipe/note-search.pipe';
+import { CollaboratorComponent } from './collaborator/collaborator.component';
+import { SearchNoteComponent } from './search-note/search-note.component';
+import { PhotoComponent } from './photo/photo.component';
 
 
 
@@ -46,8 +48,10 @@ import { NoteSearchPipe } from './pipe/note-search.pipe';
     NoteFilterPipe,
     AddNoteLabelComponent,
     SearchPipePipe,
-    TestingWorkComponent,
     NoteSearchPipe,
+    CollaboratorComponent,
+    SearchNoteComponent,
+    PhotoComponent,
     
   ],
   imports: [
@@ -61,7 +65,7 @@ import { NoteSearchPipe } from './pipe/note-search.pipe';
     
   
   ],
-  entryComponents: [UpdateNoteComponent],
+  entryComponents: [UpdateNoteComponent,CollaboratorComponent],
   
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,17 @@
+.box{
+    margin-left: 20px;
+    border: hidden;
+    display: flex; 
+  
+}
+.box-1{
+    margin-left: 27px;
+    width: 370px;
+    border: hidden;
+    outline: none;
+}
+.butt{
+   
+    float: right;
+    
+}

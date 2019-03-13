@@ -1,4 +1,4 @@
-export class user{
+export interface user{
     "name":string;
     "emailId":string;
     "password":string;

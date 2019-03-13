@@ -1,0 +1,23 @@
+<mat-list>
+  <h1 mat-subheader>Collaborators</h1>
+  <mat-divider></mat-divider>
+  <mat-list-item *ngIf="user!=null">
+    <mat-icon mat-list-icon>account_circle</mat-icon>
+    <h4 mat-line>{{user.name}} (Owner)</h4>
+    <p mat-line> {{user.emailId}} </p>
+  </mat-list-item>
+  <div class="box">
+    <mat-icon mat-list-icon>account_circle_outline</mat-icon>
+    <input class="box-1" [(ngModel)]="emailId" [value]=emailId placeholder="person or email to share with" #userEmail/>
+    &nbsp;&nbsp;
+   <mat-icon (click)=addCollaborator(emailId)>done</mat-icon>
+  </div>
+
+  <br>
+  <mat-divider></mat-divider>
+  <div class="butt">
+    <button mat-icon-button (click)=closeClick()>Cancel</button>
+    &nbsp;&nbsp;
+    <button mat-icon-button>Save</button>
+  </div>
+</mat-list>

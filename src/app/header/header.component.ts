@@ -44,13 +44,13 @@ export class HeaderComponent implements OnInit {
   public logout()
   {
     localStorage.removeItem('token');
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
 
   public searchText()
   {
     this.helperService.setSearch(this.searchInputVal);
-    
+    this.router.navigate(['/header/searchnote']);
   }
   
 

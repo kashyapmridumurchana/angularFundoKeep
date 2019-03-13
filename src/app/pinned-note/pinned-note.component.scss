@@ -15,12 +15,12 @@
         position: relative;
        
         border-color: rgb(165, 140, 140);
-        box-shadow: 0 14px 28px rgba(110, 108, 108, 0.22), 0 10px 10px rgba(110, 108, 108, 0.22);
         
       } 
       mat-card:hover{
         background-color: burlywood;
-        border:double;
+        border:outset;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 
       }
       
@@ -33,12 +33,12 @@
         position: relative;
         
         border-color: rgb(165, 140, 140);
-        box-shadow: 0 14px 28px rgba(110, 108, 108, 0.22), 0 10px 10px  rgba(110, 108, 108, 0.22);
         
       }
       mat-card:hover{
         background-color: burlywood;
-        border:double;
+        border:outset;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 
         
       }
