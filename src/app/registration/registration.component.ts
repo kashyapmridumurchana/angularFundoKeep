@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../core/service/user/user.service';
+import { HttpService } from '../core/service/http/http.service';
 
 @Component({
   selector: 'app-registration',
@@ -13,9 +14,11 @@ export class RegistrationComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
   submitted = false;
+  
 
   constructor(private formBuilder: FormBuilder,
-    private router: Router, private userService: UserService) { }
+    private router: Router, private userService: UserService,
+    private httpUtil:HttpService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -48,6 +51,13 @@ export class RegistrationComponent implements OnInit {
       }
     })
 
-
   }
+
+
+
+ 
+
+
+
+
 }

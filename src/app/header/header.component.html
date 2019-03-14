@@ -136,10 +136,29 @@
       <button mat-button matTooltip="Notifications">
         <mat-icon>notifications_on</mat-icon>
       </button>
-      <button mat-button [matMenuTriggerFor]="user" matTooltip="Google account">
-        <mat-icon>account_circle</mat-icon>
+
+
+      <button mat-button [matMenuTriggerFor]="user"
+       matTooltip="My_details">
+<mat-icon>account_circle</mat-icon>
       </button>
       <mat-menu #user="matMenu">
+
+        Upload a profile picture?
+        <br>
+        <br>
+          <div align="center">
+              <input style="display: none"type="file" (change)="onFileChanged($event)" #fileInput>
+              <button (click)="fileInput.click()">Select File</button>
+              <button (click)="onUpload()">Upload!</button>
+          </div>
+            <br>
+          &nbsp; &nbsp;Remove profile pic?
+          <br>
+          <button style="margin-left:50px;" (click)=removeImage()>remove</button>
+<br>
+<br>
+<mat-divider></mat-divider>
         <button mat-menu-item>
           <mat-icon>logout</mat-icon>
           <a mat-button (click)=logout()>
@@ -147,6 +166,8 @@
           </a>
         </button>
       </mat-menu>
+       <img class="image" [src]="imageData.imageSrc">
+
     </mat-toolbar-row>
   </mat-toolbar>
 </div>

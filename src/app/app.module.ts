@@ -24,7 +24,6 @@ import { SearchPipePipe } from './pipe/search-pipe.pipe';
 import { NoteSearchPipe } from './pipe/note-search.pipe';
 import { CollaboratorComponent } from './collaborator/collaborator.component';
 import { SearchNoteComponent } from './search-note/search-note.component';
-import { PhotoComponent } from './photo/photo.component';
 
 
 
@@ -51,7 +50,6 @@ import { PhotoComponent } from './photo/photo.component';
     NoteSearchPipe,
     CollaboratorComponent,
     SearchNoteComponent,
-    PhotoComponent,
     
   ],
   imports: [
