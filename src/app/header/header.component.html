@@ -140,7 +140,8 @@
 
       <button mat-button [matMenuTriggerFor]="user"
        matTooltip="My_details">
-<mat-icon>account_circle</mat-icon>
+       <mat-icon *ngIf="imageData.imageSrc===null">account_circle</mat-icon>
+        <img *ngIf="imageData.imageSrc!==null" class="image" [src]="imageData.imageSrc"> 
       </button>
       <mat-menu #user="matMenu">
 
@@ -150,7 +151,6 @@
           <div align="center">
               <input style="display: none"type="file" (change)="onFileChanged($event)" #fileInput>
               <button (click)="fileInput.click()">Select File</button>
-              <button (click)="onUpload()">Upload!</button>
           </div>
             <br>
           &nbsp; &nbsp;Remove profile pic?
@@ -166,7 +166,7 @@
           </a>
         </button>
       </mat-menu>
-       <img class="image" [src]="imageData.imageSrc">
+       <!-- <img class="image" [src]="imageData.imageSrc"> -->
 
     </mat-toolbar-row>
   </mat-toolbar>

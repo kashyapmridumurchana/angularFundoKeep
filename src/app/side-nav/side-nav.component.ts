@@ -43,9 +43,11 @@ export class SideNavComponent implements OnInit {
 
 
   public editLabels(label) {
+    this.getLabels();
     const dialogRef = this.dialog.open(EditLabelsComponent, {
       width: '450px',
       data: ''
+     
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

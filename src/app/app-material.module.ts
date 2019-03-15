@@ -4,7 +4,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import{ MatButtonModule,MatRippleModule,MatSelectModule,MatInputModule,
    MatToolbarModule, MatMenuModule,MatSidenavModule, MatListModule, MatDividerModule,
     MatTooltipModule, MatNativeDateModule, MatExpansionModule, MatGridListModule,
-     MatSnackBarModule, MatSlideToggleModule, MatChipsModule, MatCheckboxModule,
+     MatSnackBarModule, MatSlideToggleModule, MatChipsModule, MatCheckboxModule, MatAutocompleteModule,
       
  } from '@angular/material';
 import {MatIconModule} from '@angular/material/icon'
@@ -44,6 +44,7 @@ import {MatDialogModule} from '@angular/material/dialog';
    MatDialogModule,
    MatChipsModule,
    MatCheckboxModule,
+   MatAutocompleteModule
 
    
    
@@ -76,7 +77,8 @@ import {MatDialogModule} from '@angular/material/dialog';
    MatDialogModule,
    MatChipsModule,
    MatCheckboxModule,
-  
+   MatAutocompleteModule
+
   ]
 })
 export class AppMaterialModule { }

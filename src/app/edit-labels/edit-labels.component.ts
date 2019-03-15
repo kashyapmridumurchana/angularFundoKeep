@@ -37,11 +37,13 @@ export class EditLabelsComponent implements OnInit {
       "labelName": name
     }
     this.noteService.createLabel(newLabel).subscribe(response => {
+      this.getLabels();
       this.snackBar.open("Label created successfully", "OK", {
+       
         duration: 3000,
       });
     })
-    this.getLabels();
+   
     this.dialogRef.close();
   }
 
@@ -62,6 +64,7 @@ export class EditLabelsComponent implements OnInit {
 
   public deleteLabel(label) {
     this.noteService.deleteLabel(label.labelId).subscribe(response => {
+      this.getLabels();
       this.snackBar.open("deleted Label forever", "OK", { duration: 2000 });
     }), error => {
       this.snackBar.open("error", "error to deleting notes", { duration: 2000 });

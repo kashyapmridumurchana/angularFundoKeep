@@ -51,7 +51,9 @@ putServiceWithParam(url,object){
   return this.http.put<any>(url,object,{observe : 'response'});
 }
 
-
+getAllUsers(url){
+  return this.http.get<any>(url,{observe : 'response'});
+}
 }
 
 

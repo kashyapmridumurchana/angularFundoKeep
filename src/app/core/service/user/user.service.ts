@@ -40,7 +40,15 @@ export class UserService {
     return this.httpUtil.putService(environment.base_url+'resetpassword/'+id,user,id);
   }
 
-  userDetails():Observable<any>{
+  userDetails():Observable<any>
+  {
     return this.httpUtil.getService(environment.base_url+'userdetails',this.httpheaders);
-}
+  }
+
+  getAllUsers():Observable<any>
+  {
+return this.httpUtil.getAllUsers(environment.base_url+'allUserDetails');
+  }
+
+
 }

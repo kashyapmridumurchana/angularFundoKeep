@@ -100,7 +100,7 @@ export class PinnedNoteComponent implements OnInit {
 
   public collaboratorAdd(){
       const dialogRef = this.dialog.open(CollaboratorComponent, {
-        width: '550px',
+        width:'auto',
         data: this.user
       });
       dialogRef.afterClosed().subscribe(result => {

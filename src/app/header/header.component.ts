@@ -64,7 +64,8 @@ export class HeaderComponent implements OnInit {
 
   public onFileChanged(event) {
    
-    this.selectedFile = event.target.files[0]
+    this.selectedFile = event.target.files[0];
+    this.onUpload();
   }
 
   public onUpload() {
@@ -101,14 +102,19 @@ export class HeaderComponent implements OnInit {
     this.httpUtil.getService('http://localhost:8082/user/userdetails', httpheaders).subscribe(resp => {
       this.user = resp
       console.log(resp)
+      if (this.user.image != null) {
       const url = `data:${this.user.contentType};base64,${this.user.image}`;
       this.imageData = {
         imageSrc: this.sanitizer.bypassSecurityTrustUrl(url)
       }
-        , (error) => {
-          console.log(error)
-        }
-    })
+    }
+    else {
+      this.imageData.imageSrc = null;
+    }
+    }  , error => {
+console.log(error);
+    }
+    )
   }
 
   public removeImage()
