@@ -2,24 +2,33 @@
   <h1 mat-subheader>Collaborators</h1>
   <mat-divider></mat-divider>
   <mat-list-item *ngIf="user!=null">
-      <mat-icon  mat-list-icon *ngIf="imageData.imageSrc===null">account_circle</mat-icon>
-      <img  mat-list-icon *ngIf="imageData.imageSrc!==null" class="image" [src]="imageData.imageSrc" style="width: 40px;height: 40px;"> 
-      <h4 mat-line>{{user.name}} (Owner)</h4>
+    <mat-icon mat-list-icon *ngIf="imageData.imageSrc===null">account_circle</mat-icon>
+    <img mat-list-icon *ngIf="imageData.imageSrc!==null" class="image" [src]="imageData.imageSrc"
+      style="width: 40px;height: 40px;">
+    <h4 mat-line>{{user.name}} (Owner)</h4>
     <p mat-line> {{user.emailId}} </p>
   </mat-list-item>
-  <div >
+  <mat-list-item *ngFor="let collabUser of collabUsers">
+    <!-- <mat-icon mat-list-icon *ngIf="imageData.imageSrc===null">account_circle</mat-icon> -->
+    <!-- <img mat-list-icon class="image" *ngIf="imageData.imageSrc!=null" [src]="imageData.imageSrc"> -->
+    <h4 mat-line>{{collabUser.name}}</h4>
+    <p mat-line> {{collabUser.emailId}} </p>
+    <mat-icon mat-list-icon (click)="removeCollaborator(collabUser)" >clear</mat-icon>
+
+</mat-list-item>
+  <div>
     <mat-icon mat-list-icon>account_circle_outline</mat-icon>
-    <!--   -->
-  <input [(ngModel)]="query" (click)=enableSearch() placeholder="enter email address" style="align-content: center;width: 300px;border: hidden;outline: none;padding: 20px;" />
-  <mat-icon >done</mat-icon>
-  &nbsp;&nbsp;
-  <div *ngIf="searchEnable">
+
+    <input [(ngModel)]="query" (click)=enableSearch() placeholder="enter email address"
+      style="align-content: center;width: 300px;border: hidden;outline: none;padding: 20px;" />
+
+    &nbsp;&nbsp;
+    <div *ngIf="searchEnable">
       <li *ngFor="let user of users | searchUser: query">
-        {{user.emailId}} 
-       <button mat-icon-button (click)=addCollaborator(user.emailId)>Add
-         
-       </button> 
-      </li> 
+        {{user.emailId}}
+        <button (click)=collaborate(user)>Add
+        </button>
+      </li>
     </div>
   </div>
 
@@ -28,6 +37,6 @@
   <div class="butt">
     <button mat-icon-button (click)=closeClick()>Cancel</button>
     &nbsp;&nbsp;
-    <button mat-icon-button>Save</button>
+    <button mat-icon-button (click)="collaborate(user)">Save</button>
   </div>
 </mat-list>

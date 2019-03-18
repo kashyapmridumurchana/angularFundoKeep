@@ -1,10 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from '../core/service/user/user.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { user } from '../core/model/user/user';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpService } from '../core/service/http/http.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NoteService } from '../core/service/note/note.service';
+import { Note } from '../core/model/note/note';
 interface ImageData {
   imageSrc: any;
 }
@@ -20,12 +22,17 @@ user1: any
 searchEnable=false;
 public imageData = <ImageData>{};
 public users: user[] = [];
+public collabUsers: user[] = [];
+
 
   constructor(private userService:UserService,
      public dialogRef: MatDialogRef<CollaboratorComponent>,
      @Inject(MAT_DIALOG_DATA) public data,
+     
      private httpUtil:HttpService,
-     private sanitizer: DomSanitizer) { }
+     private sanitizer: DomSanitizer,
+     private noteService:NoteService,
+     private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.getUserById();
@@ -89,12 +96,35 @@ this.searchEnable=true;
 }
 
 
-public addCollaborator(emailId)
+
+collaborate(user)
 {
-  console.log(emailId);
-  this.searchEnable=false;
-  
+  //  console.log(user.id);
+  //  console.log(this.data.noteId)
+    this.noteService.createCollaborator(this.data.noteId,user.id).subscribe(resp=>
+     console.log(this.data.noteId,user.id));
+     this.snackBar.open("Collaborator added", "OK", {
+      duration: 3000,
+    });
+    this.closeClick();
 }
+
+getCollaborateUser() {
+  for (let i = 0; i < this.data.collaborators.length; i++) {
+    var k = 0;
+    console.log(this.data.collaborators[i].userId);
+    this.userService.getCollaborateUser(this.data.collaborators[i].userId).subscribe(
+      user => {
+        this.collabUsers[k] = user;
+        k++;
+      }
+      , error => console.log(error))
+  }
+}
+
+
+
+
   }
   
 

@@ -27,5 +27,9 @@ export class UpdateNoteComponent implements OnInit {
     this.dialogRef.close();
 
   }
+  updateColor(data)
+  {
+    this.noteService.updateNote(data.note);
+}
 }
 

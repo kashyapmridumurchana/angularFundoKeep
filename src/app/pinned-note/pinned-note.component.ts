@@ -20,7 +20,8 @@ export class PinnedNoteComponent implements OnInit {
   @Input() notes
   @Input() grid = false;
   @Output() eventPin = new EventEmitter();
-  user: user
+  user: user;
+  @Output() updateNoteEvent = new EventEmitter();
 
   public mytoken = '';
   public selectable = true;
@@ -36,15 +37,10 @@ export class PinnedNoteComponent implements OnInit {
       console.log('user-->', resp);
     })
 
-    // this.getLabels();
+    
   }
 
-  // public getLabels() {
-  //   this.mytoken = localStorage.getItem('token');
-  //   this.noteService.retrieveLabels(this.mytoken).subscribe(newLabel => {
-  //     this.labels = newLabel;
-  //   })
-  // }
+
 
   onUpdateNoteLabel(data) {
     this.eventPin.emit(data);
@@ -98,14 +94,18 @@ export class PinnedNoteComponent implements OnInit {
       })
   }
 
-  public collaboratorAdd(){
+  public collaboratorAdd(note){
       const dialogRef = this.dialog.open(CollaboratorComponent, {
         width:'auto',
-        data: this.user
+        data: note
       });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
       });
 
     }
+
+    public updateColor(data) {
+      this.eventPin.emit(data);
+  }
 }

@@ -1,6 +1,6 @@
 <div class="gk" [ngClass]="grid ? 'gk-grid-view': 'gk-list-view'">
   <div *ngFor="let note of notes">
-    <mat-card  >
+    <mat-card [style.background-color]="note.color" >
       <mat-card-header >
         <mat-card-title (click)=openDialog(note)>
           {{note.title}}
@@ -26,12 +26,10 @@
         <button mat-icon-button matTooltip="Remind me">
           <mat-icon>add_alert</mat-icon>
         </button>
-        <button mat-icon-button matTooltip="Collaborator" (click)=collaboratorAdd()>
+        <button mat-icon-button matTooltip="Collaborator" (click)=collaboratorAdd(note)>
           <mat-icon>person_add</mat-icon>
         </button>
-        <button mat-icon-button matTooltip="Change color">
-          <mat-icon>palette</mat-icon>
-        </button>
+        <app-color-change [newNote]="note" (colorChange)="updateColor($event)"></app-color-change>
         <button mat-icon-button matTooltip="Add image">
           <mat-icon>image</mat-icon>
         </button>

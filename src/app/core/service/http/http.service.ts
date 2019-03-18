@@ -54,6 +54,20 @@ putServiceWithParam(url,object){
 getAllUsers(url){
   return this.http.get<any>(url,{observe : 'response'});
 }
+
+getUserEmail(url,header)
+  {
+    return this.http.get<any>(url,header);
+}
+
+postForCollaborator(url,header)
+{
+  return this.http.post<any>(url,{},header);
+}
+getCollaborateUser(url)
+  {
+    return this.http.get<any>(url,{});
+}
 }
 
 

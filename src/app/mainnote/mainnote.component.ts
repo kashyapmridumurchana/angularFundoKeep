@@ -33,12 +33,12 @@ export class MainnoteComponent implements OnInit {
     );
     this.helperService.getSearch().subscribe((query) => {
       console.log('response', query);
-      if(!query){
-        this.getNotes(); 
+      if (!query) {
+        this.getNotes();
         return;
       }
-      this.notes = this.notes.filter((item) => 
-      item.title.toLowerCase().includes(query.toLowerCase()));
+      this.notes = this.notes.filter((item) =>
+        item.title.toLowerCase().includes(query.toLowerCase()));
     });
   }
 
@@ -47,10 +47,6 @@ export class MainnoteComponent implements OnInit {
       this.notes = newNote;
     })
   }
-
-
-
-
 
   public refresh(event) {
     if (event) {

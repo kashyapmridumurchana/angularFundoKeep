@@ -25,6 +25,7 @@ import { NoteSearchPipe } from './pipe/note-search.pipe';
 import { CollaboratorComponent } from './collaborator/collaborator.component';
 import { SearchNoteComponent } from './search-note/search-note.component';
 import { SearchUserPipe } from './pipe/search-user.pipe';
+import { ColorChangeComponent } from './color-change/color-change.component';
 
 
 
@@ -52,6 +53,7 @@ import { SearchUserPipe } from './pipe/search-user.pipe';
     CollaboratorComponent,
     SearchNoteComponent,
     SearchUserPipe,
+    ColorChangeComponent,
     
   ],
   imports: [

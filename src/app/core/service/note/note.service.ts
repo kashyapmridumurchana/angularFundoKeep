@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class NoteService {
-
+  
   constructor(private httpUtil: HttpService, private router: Router, public snackBar: MatSnackBar) { }
 
   retrieveNotes(token):Observable<any>
@@ -120,8 +120,19 @@ removeLabelFromNote(noteId, labelId) {
 
 addLabelToNote(noteId, label) {
   return this.httpUtil.putServiceWithParam(`${environment.note_url}addnotelabel/`+noteId,label)
-   
+  
+}
 
+
+createCollaborator(noteId, userId) {
+  var token = localStorage.getItem('token');
+  var httpheaders = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'token': token
+    })
+};
+  return this.httpUtil.postForCollaborator(`${environment.note_url}createcollaborator/`+noteId+'/'+userId,httpheaders )
 }
 
 }
