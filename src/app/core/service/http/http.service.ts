@@ -68,6 +68,11 @@ getCollaborateUser(url)
   {
     return this.http.get<any>(url,{});
 }
+deleteForCollaborator(url)
+{
+  return this.http.delete<any>(url,{});
+}
+
 }
 
 

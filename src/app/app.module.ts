@@ -29,7 +29,6 @@ import { ColorChangeComponent } from './color-change/color-change.component';
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

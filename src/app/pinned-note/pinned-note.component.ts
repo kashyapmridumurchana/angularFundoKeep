@@ -37,7 +37,7 @@ export class PinnedNoteComponent implements OnInit {
       console.log('user-->', resp);
     })
 
-    
+
   }
 
 
@@ -86,7 +86,7 @@ export class PinnedNoteComponent implements OnInit {
     this.noteService.removeLabelFromNote(note.noteId, label).subscribe(response => {
       var data = { note }
       this.eventPin.emit(data);
-     
+
     },
       (error) => {
         console.log(error);
@@ -94,18 +94,20 @@ export class PinnedNoteComponent implements OnInit {
       })
   }
 
-  public collaboratorAdd(note){
-      const dialogRef = this.dialog.open(CollaboratorComponent, {
-        width:'auto',
-        data: note
-      });
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-      });
+  public collaboratorAdd(note) {
+    const dialogRef = this.dialog.open(CollaboratorComponent, {
+      width: 'auto',
+      data: note
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
 
-    }
-
-    public updateColor(data) {
-      this.eventPin.emit(data);
   }
+
+  public updateColor(data) {
+    this.eventPin.emit(data);
+  }
+
+
 }

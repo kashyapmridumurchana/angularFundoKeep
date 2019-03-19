@@ -6,7 +6,6 @@ import { HttpHeaders } from '@angular/common/http';
 import { HttpService } from '../core/service/http/http.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NoteService } from '../core/service/note/note.service';
-import { Note } from '../core/model/note/note';
 interface ImageData {
   imageSrc: any;
 }
@@ -35,8 +34,9 @@ public collabUsers: user[] = [];
      private snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.getCollaborateUser();
     this.getUserById();
-    this.getAllUsers();
+    this.getAllUsers(); 
     this.photoDisplay();
 }
 
@@ -90,26 +90,28 @@ public closeClick()
   this.dialogRef.close();
 }
 
-enableSearch()
+public enableSearch()
 {
 this.searchEnable=true;
 }
 
 
 
-collaborate(user)
+public collaborate(user)
 {
-  //  console.log(user.id);
-  //  console.log(this.data.noteId)
-    this.noteService.createCollaborator(this.data.noteId,user.id).subscribe(resp=>
-     console.log(this.data.noteId,user.id));
-     this.snackBar.open("Collaborator added", "OK", {
-      duration: 3000,
-    });
+    this.noteService.createCollaborator(this.data.noteId,user.id).subscribe(response => {
+      this.getCollaborateUser();    
+      console.log(this.data.noteId,user.id);
+      this.snackBar.open("Collaborator added", "OK", {
+        duration: 3000,
+      });
+    })
     this.closeClick();
 }
 
-getCollaborateUser() {
+
+
+public getCollaborateUser() {
   for (let i = 0; i < this.data.collaborators.length; i++) {
     var k = 0;
     console.log(this.data.collaborators[i].userId);
@@ -122,7 +124,17 @@ getCollaborateUser() {
   }
 }
 
-
+public removeCollaborator(collabUser)
+{
+this.noteService.deleteCollaborator(this.data.noteId,collabUser.id).subscribe(response => {
+  this.getCollaborateUser();
+  console.log(this.data.noteId,collabUser.id);
+  this.snackBar.open("Collaborator removed", "OK", {
+    duration: 3000,
+  });
+})
+ this.closeClick(); 
+}
 
 
   }

@@ -23,13 +23,15 @@
       style="align-content: center;width: 300px;border: hidden;outline: none;padding: 20px;" />
 
     &nbsp;&nbsp;
-    <div *ngIf="searchEnable">
+   
+    <div  *ngIf="searchEnable">
       <li *ngFor="let user of users | searchUser: query">
         {{user.emailId}}
         <button (click)=collaborate(user)>Add
         </button>
       </li>
     </div>
+  
   </div>
 
   <br>

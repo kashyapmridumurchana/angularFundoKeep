@@ -77,8 +77,7 @@ import {MatDialogModule} from '@angular/material/dialog';
    MatDialogModule,
    MatChipsModule,
    MatCheckboxModule,
-   MatAutocompleteModule
-
+   MatAutocompleteModule,
   ]
 })
 export class AppMaterialModule { }

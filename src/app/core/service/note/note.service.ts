@@ -135,4 +135,9 @@ createCollaborator(noteId, userId) {
   return this.httpUtil.postForCollaborator(`${environment.note_url}createcollaborator/`+noteId+'/'+userId,httpheaders )
 }
 
+deleteCollaborator(noteId,userId){
+  
+  return this.httpUtil.deleteForCollaborator(`${environment.note_url}deletecollaborator/`+noteId+'/'+userId)
+}
+
 }

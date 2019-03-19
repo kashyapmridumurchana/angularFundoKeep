@@ -1,6 +1,6 @@
 <div class="gk" [ngClass]="grid ? 'gk-grid-view': 'gk-list-view'">
-  <div *ngFor="let note of notes">
-    <mat-card [style.background-color]="note.color" >
+  <div  *ngFor="let note of notes">
+    <mat-card  [style.background-color]="note.color" >
       <mat-card-header >
         <mat-card-title (click)=openDialog(note)>
           {{note.title}}
@@ -22,32 +22,32 @@
           <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
         </mat-chip>
       </mat-chip-list>
-      <div>
-        <button mat-icon-button matTooltip="Remind me">
+      <div >
+        <button mat-icon-button matTooltip="Remind me" >
           <mat-icon>add_alert</mat-icon>
         </button>
-        <button mat-icon-button matTooltip="Collaborator" (click)=collaboratorAdd(note)>
+        <button  mat-icon-button matTooltip="Collaborator" (click)=collaboratorAdd(note)>
           <mat-icon>person_add</mat-icon>
         </button>
         <app-color-change [newNote]="note" (colorChange)="updateColor($event)"></app-color-change>
-        <button mat-icon-button matTooltip="Add image">
+        <button  mat-icon-button matTooltip="Add image">
           <mat-icon>image</mat-icon>
         </button>
-        <button mat-icon-button (click)=sendToArchive(note) matTooltip="Archive">
+        <button   mat-icon-button (click)=sendToArchive(note) matTooltip="Archive">
           <mat-icon>archive</mat-icon>
         </button>
 
-        <button mat-icon-button [matMenuTriggerFor]="more" matTooltip="more">
+        <button  mat-icon-button [matMenuTriggerFor]="more" matTooltip="more">
           <mat-icon>more_vert</mat-icon>
         </button>
-        <mat-menu #more="matMenu" >
+        <mat-menu  #more="matMenu" >
           <button mat-button (click)=deleteNote(note)>Delete Note</button>
           <app-add-note-label [note]="note" (addNoteLabel)="onUpdateNoteLabel($event)"></app-add-note-label>
         </mat-menu>
         <button mat-icon-button matTooltip="undo">
           <mat-icon>undo</mat-icon>
         </button>
-        <button mat-icon-button matTooltip="redo">
+        <button   mat-icon-button matTooltip="redo">
           <mat-icon>redo</mat-icon>
         </button>
       </div>
