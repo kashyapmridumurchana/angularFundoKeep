@@ -41,6 +41,10 @@ export class SideNavComponent implements OnInit {
     this.router.navigate(['header/trashednote']);
   }
 
+  public navigateReminder()
+  {
+    this.router.navigate(['header/reminder']);
+  }
 
   public editLabels(label) {
     this.getLabels();

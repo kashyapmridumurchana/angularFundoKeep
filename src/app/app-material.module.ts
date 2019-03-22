@@ -13,6 +13,7 @@ import { MatCardModule} from'@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 @NgModule({
   declarations: [],
@@ -44,7 +45,10 @@ import {MatDialogModule} from '@angular/material/dialog';
    MatDialogModule,
    MatChipsModule,
    MatCheckboxModule,
-   MatAutocompleteModule
+   MatAutocompleteModule,
+   OwlDateTimeModule, 
+  OwlNativeDateTimeModule,
+    
 
    
    
@@ -78,6 +82,9 @@ import {MatDialogModule} from '@angular/material/dialog';
    MatChipsModule,
    MatCheckboxModule,
    MatAutocompleteModule,
+   OwlDateTimeModule, 
+  OwlNativeDateTimeModule,
+    
   ]
 })
 export class AppMaterialModule { }

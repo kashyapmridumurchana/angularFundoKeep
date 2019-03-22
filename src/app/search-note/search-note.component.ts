@@ -10,8 +10,10 @@ import { Note } from '../core/model/note/note';
 })
 export class SearchNoteComponent implements OnInit {
 
+ 
   public mytoken = '';
   public notes: Note[] = [];
+  public stringSearch='';
   constructor( private helperService: HelperKeepService,private noteService:NoteService) { }
 
   ngOnInit() {
@@ -22,8 +24,9 @@ export class SearchNoteComponent implements OnInit {
       this.getNotes(); 
       return;
     }
+    this.stringSearch=query;
     this.notes = this.notes.filter((item) => 
-    item.title.toLowerCase().includes(query.toLowerCase()));
+    item.title.toLowerCase().includes(this.stringSearch.toLowerCase()));
   });
 }
 

@@ -37,8 +37,14 @@ else if(valid==='pinned'){
         return item;
       }
     });
-  
     }
-  return null;
-  }
+    else if (valid === 'reminder') {
+      return notes.filter((item) => {
+        if (!item.inTrash && item.reminder) {
+          return item;
+        }
+      });
+    }
+    return null;
+}
 }

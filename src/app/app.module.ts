@@ -26,6 +26,7 @@ import { CollaboratorComponent } from './collaborator/collaborator.component';
 import { SearchNoteComponent } from './search-note/search-note.component';
 import { SearchUserPipe } from './pipe/search-user.pipe';
 import { ColorChangeComponent } from './color-change/color-change.component';
+import { ReminderComponent } from './reminder/reminder.component';
 
 
 
@@ -53,6 +54,7 @@ import { ColorChangeComponent } from './color-change/color-change.component';
     SearchNoteComponent,
     SearchUserPipe,
     ColorChangeComponent,
+    ReminderComponent,
     
   ],
   imports: [

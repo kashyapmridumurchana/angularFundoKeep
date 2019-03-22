@@ -19,10 +19,10 @@ export class PinnedNoteComponent implements OnInit {
 
   @Input() notes
   @Input() grid = false;
+  @Input() message;
   @Output() eventPin = new EventEmitter();
   user: user;
   @Output() updateNoteEvent = new EventEmitter();
-
   public mytoken = '';
   public selectable = true;
   public removable = true;
@@ -40,7 +40,7 @@ export class PinnedNoteComponent implements OnInit {
 
   }
 
-
+  
 
   onUpdateNoteLabel(data) {
     this.eventPin.emit(data);
@@ -109,5 +109,19 @@ export class PinnedNoteComponent implements OnInit {
     this.eventPin.emit(data);
   }
 
+  public saveRemainder(selectedMoment,note)
+  {
+    note.reminder=selectedMoment;
+    console.log(note.reminder);
+    const data = { note }
+    this.eventPin.emit(data);
+  }
 
+  public removeRemainder(note)
+  {
+    note.reminder=null;
+    console.log(note.reminder);
+    const data = { note }
+    this.eventPin.emit(data);
+}
 }

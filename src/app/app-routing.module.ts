@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { EditLabelsComponent } from './edit-labels/edit-labels.component';
 import { AuthGuard } from './guard/auth.guard';
 import { SearchNoteComponent } from './search-note/search-note.component';
+import { ReminderComponent } from './reminder/reminder.component';
 
 const appRoutes: Routes = [
  
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
     { path: 'archivenote', component:ArchiveNotesComponent},
     { path: 'trashednote', component:TrashedNotesComponent},
     { path: 'editlabel', component:EditLabelsComponent},
+    { path: 'reminder', component:ReminderComponent},
     { path: 'searchnote', component:SearchNoteComponent},
     { path: 'mainnote', component: MainnoteComponent }
   ]

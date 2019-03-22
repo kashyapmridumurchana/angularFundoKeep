@@ -1,0 +1,10 @@
+<div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
+     <!-- <div fxFlex="40%">
+      <app-notesearchbody (eventCreate)="refresh($event)"></app-notesearchbody>
+    </div>  -->
+    <div fxFlex="40%">
+      <app-pinned-note [notes]="notes | noteFilter:'reminder'" [grid]="grid" [message]="'reminder'"
+        (eventPin)="onUpdateNote($event)">
+      </app-pinned-note>
+    </div>
+  </div>

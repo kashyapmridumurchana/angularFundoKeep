@@ -1,6 +1,6 @@
 <div fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center"></div>
 <div class="move" *ngFor="let note of notes | noteFilter: 'archive'">
-  <mat-card class="move">
+  <mat-card class="move" [style.background-color]="note.color">
     <mat-card-header>
       <mat-card-title (click)=openDialog(note)>
         {{note.title}}
@@ -23,9 +23,8 @@
       <button mat-icon-button matTooltip="Collaborator">
         <mat-icon>person_add</mat-icon>
       </button>
-      <button mat-icon-button matTooltip="Change color">
-        <mat-icon>palette</mat-icon>
-      </button>
+      <app-color-change [newNote]="note" (colorChange)="updateColor($event)"></app-color-change>
+
       <button mat-icon-button matTooltip="Add image">
         <mat-icon>image</mat-icon>
       </button>

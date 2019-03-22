@@ -1,4 +1,15 @@
-<div fxFlex="40%">
-  <app-pinned-note [notes]="notes | noteSearch" (eventPin)="onUpdateNote($event)">
+
+<div  *ngIf="stringSearch===''">
+<div class="icon">
+Type something in search bar 
+
+</div>
+
+
+
+</div> 
+<div fxFlex="40%" *ngIf="stringSearch!==''">
+  
+  <app-pinned-note [notes]="notes | noteSearch: stringSearch" (eventPin)="onUpdateNote($event)">
   </app-pinned-note>
 </div>

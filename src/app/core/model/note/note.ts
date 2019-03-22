@@ -5,5 +5,6 @@ export class Note{
     "archive":boolean;
     "pinned":boolean;
     "inTrash":boolean;
-
+    "reminder":string;
+    
 }

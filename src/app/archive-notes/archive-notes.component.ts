@@ -108,5 +108,7 @@ export class ArchiveNotesComponent implements OnInit {
 
       })
   }
-  
+  public updateColor(data) {
+    this.eventPin.emit(data);
+  }
 }
