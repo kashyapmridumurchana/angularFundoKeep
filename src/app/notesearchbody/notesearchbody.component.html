@@ -1,5 +1,5 @@
 <div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
-    <form [formGroup]="createNoteForm">
+  <form [formGroup]="createNoteForm">
     &nbsp; &nbsp; &nbsp;
     <mat-toolbar>
       <mat-accordion>
@@ -22,31 +22,70 @@
             <ng-template #tempTtext>
             </ng-template>
           </mat-expansion-panel-header>
-          <mat-panel-description>
+
+
+         <mat-panel-title>
             <input class="noBorderAndBackground" placeholder="Title" formControlName="title"
               [ngClass]="{ 'is-invalid': submitted && f.title.errors }">&nbsp;
-            <button mat-icon-button matTooltip="pin">
+            <button mat-icon-button (click)="pinnedNoteSave(createNoteForm.value)" matTooltip="pin">
               <mat-icon>colorize</mat-icon>
             </button>
-          </mat-panel-description>
-          <mat-panel-description>
+          </mat-panel-title>
+          <mat-panel-title>
             <textarea class="noBorderAndBackground" placeholder="Take a note.." formControlName="description"
               [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
-          </mat-panel-description>
-          <mat-panel-description>
+          </mat-panel-title>
+         
+         
+          <mat-panel-title>
             <div class="container">
-              <div class="buttons">
-                <button *ngFor="let button of buttons" mat-icon-button matTooltip={{button.tooltip}}>
-                  <mat-icon>{{button.name}}</mat-icon>
+              <div>
+                <button mat-icon-button matTooltip="Remind me" [matMenuTriggerFor]="remind">
+                  <mat-icon>add_alert</mat-icon>
                 </button>
+                <mat-menu #remind="matMenu" class="morecard" (click)="$event.stopPropagation()">
+                  <div class="input-wrapper">
+                    <label>Add a reminder to note:</label>
+                    <hr>
+                    <input [min]="min" formControlName="reminder" [owlDateTimeTrigger]="dtPicker1" [owlDateTime]="dtPicker1"
+                      placeholder="select date and time">
+                    <owl-date-time #dtPicker1></owl-date-time>
+                  </div>
+                  <div>
+                    <button mat-button class="saveButton" (click)="saveReminder(createNoteForm.value.reminder,createNoteForm.value)">Save</button>
+                  </div>
+           </mat-menu>
+                <button mat-icon-button matTooltip="Collaborator">
+                  <mat-icon>person_add</mat-icon>
+                </button>
+                <app-color-change [newNote]="createNoteForm.value" (colorChange)="updateColor($event)"></app-color-change>          
+                <!-- <button mat-icon-button matTooltip="Add image">
+                  <mat-icon>image</mat-icon>
+                </button> -->
+                <button mat-icon-button (click)="archiveNoteSave(createNoteForm.value)" matTooltip="Archive">
+                  <mat-icon>archive</mat-icon>
+                </button>
+                <!-- <button mat-icon-button [matMenuTriggerFor]="more" matTooltip="more">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #more="matMenu" class="morecard">
+                  <button mat-button (click)=deleteNote(note)>Delete Note</button>
+                  <app-add-note-label [note]="note" (addNoteLabel)="onUpdateNoteLabel($event)"></app-add-note-label>
+                </mat-menu> -->
+                <!-- <button mat-icon-button  matTooltip="undo">
+                  <mat-icon>undo</mat-icon>
+                </button>
+                <button mat-icon-button  matTooltip="redo">
+                  <mat-icon>redo</mat-icon>
+                </button> -->
               </div>
-              <div class="close-button">
+              <div class="close-button" (click)="onSubmit(createNoteForm.value)" >
                 <button mat-icon-button matTooltip="close">
                   Close
                 </button>
               </div>
             </div>
-          </mat-panel-description>
+          </mat-panel-title>
         </mat-expansion-panel>
       </mat-accordion>
     </mat-toolbar>

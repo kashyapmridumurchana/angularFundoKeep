@@ -14,47 +14,15 @@ import { Note } from '../core/model/note/note';
 export class NotesearchbodyComponent implements OnInit {
 
   @Output() eventCreate = new EventEmitter();
+  @Output() eventPin = new EventEmitter();
  
- 
-  public buttons = [{
-    name: 'notifications',
-    tooltip: 'notifications'
-  },
-  {
-    name: 'color_lens',
-    tooltip: 'change color'
-  },
-  {
-    name: 'person_add',
-    tooltip: 'collaborator'
-  }, {
-    name: 'image',
-    tooltip: 'image upload'
-  },
-  {
-    name: 'archive',
-    tooltip: 'archive'
-  },
-  {
-    name: 'more_vert',
-    tooltip: 'more'
-  },
-  {
-    name: 'undo',
-    tooltip: 'undo'
-  }, {
-    name: 'redo',
-    tooltip: 'redo'
-  }]
-
-
-
   public showHeader = true;
   createNoteForm: FormGroup;
   loading = false;
   submitted = false;
+  selectedMoment =new Date();
+  public min = new Date();
   public mytoken = localStorage.getItem('token')
-
   public notes: Note[] = [];
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute,
@@ -65,15 +33,16 @@ export class NotesearchbodyComponent implements OnInit {
 
     this.createNoteForm = this.formBuilder.group({
       title: [''],
-      description: ['']
+      description: [''],
+      reminder:''
     });
 
   }
 
 
-  get f() { return this.createNoteForm.controls; }
+get f() { return this.createNoteForm.controls; }
 
-  public onSubmit(note) {
+public onSubmit(note) {
     this.submitted = true;
 
     if (this.createNoteForm.invalid) {
@@ -90,7 +59,39 @@ export class NotesearchbodyComponent implements OnInit {
     })
   }
 
+public pinnedNoteSave(note) {
+    const newNote = {
+      ...note,
+      pinned: true,
+    }
+    this.onSubmit(newNote);
+}
 
+public archiveNoteSave(note) {
+  const newNote = {
+    ...note,
+    archive: true
+  }
+  console.log(newNote.archive);
+  this.onSubmit(newNote);
+
+}
+public updateColor(data)
+  {
+    this.onSubmit(data.note);
+  }
+
+public saveReminder(selectedMoment,note)
+  {
+    const newNote = {
+      ...note,
+      reminder: selectedMoment,
+    }
+    this.onSubmit(newNote);
+}
+onUpdateNoteLabel(data) {
+  this.eventPin.emit(data);
+}
 }
 
 

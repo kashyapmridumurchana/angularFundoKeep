@@ -47,14 +47,14 @@
           <div>
             <button mat-button class="saveButton" (click)="saveRemainder(selectedMoment,note)">Save</button>
           </div>
-</mat-menu>
+        </mat-menu>
         <button   mat-icon-button matTooltip="Collaborator" (click)=collaboratorAdd(note)>
           <mat-icon>person_add</mat-icon>
         </button>
         <app-color-change [newNote]="note" (colorChange)="updateColor($event)"></app-color-change>
-        <button  mat-icon-button matTooltip="Add image">
+        <!-- <button  mat-icon-button matTooltip="Add image">
           <mat-icon>image</mat-icon>
-        </button>
+        </button> -->
         <button   mat-icon-button (click)=sendToArchive(note) matTooltip="Archive">
           <mat-icon>archive</mat-icon>
         </button>
@@ -66,12 +66,12 @@
           <button mat-button (click)=deleteNote(note)>Delete Note</button>
           <app-add-note-label [note]="note" (addNoteLabel)="onUpdateNoteLabel($event)"></app-add-note-label>
         </mat-menu>
-        <button mat-icon-button matTooltip="undo">
+        <!-- <button mat-icon-button matTooltip="undo">
           <mat-icon>undo</mat-icon>
         </button>
         <button   mat-icon-button matTooltip="redo">
           <mat-icon>redo</mat-icon>
-        </button>
+        </button> -->
       </div>
     </mat-card>
   </div>
