@@ -27,6 +27,7 @@ import { SearchNoteComponent } from './search-note/search-note.component';
 import { SearchUserPipe } from './pipe/search-user.pipe';
 import { ColorChangeComponent } from './color-change/color-change.component';
 import { ReminderComponent } from './reminder/reminder.component';
+import { LabelsComponent } from './labels/labels.component';
 
 
 
@@ -55,6 +56,7 @@ import { ReminderComponent } from './reminder/reminder.component';
     SearchUserPipe,
     ColorChangeComponent,
     ReminderComponent,
+    LabelsComponent,
     
   ],
   imports: [

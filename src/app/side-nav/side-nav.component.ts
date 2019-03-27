@@ -68,6 +68,9 @@ export class SideNavComponent implements OnInit {
 
   }
 
-
+  notesWithList(label,path)
+  {
+    this.router.navigate([path,label.labelName]);
+}
 
 }

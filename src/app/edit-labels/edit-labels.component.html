@@ -14,6 +14,9 @@
     <div class="centre" fxLayout=row>
         <mat-icon (click)=deleteLabel(label)>delete</mat-icon>
         <input class="box" [(ngModel)]="label.labelName" [value]=label.labelName placeholder="LabelName" #lab>
+       
+        <!-- <div fxFlex=80% class="box" contenteditable="true" id="text" #labl>
+            {{label.labelName}}</div> -->
         <mat-icon (click)=labelUpdate(label)>edit</mat-icon>
     </div>
 </div>

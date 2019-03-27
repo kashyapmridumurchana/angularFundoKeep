@@ -14,6 +14,7 @@ import { EditLabelsComponent } from './edit-labels/edit-labels.component';
 import { AuthGuard } from './guard/auth.guard';
 import { SearchNoteComponent } from './search-note/search-note.component';
 import { ReminderComponent } from './reminder/reminder.component';
+import { LabelsComponent } from './labels/labels.component';
 
 const appRoutes: Routes = [
  
@@ -28,6 +29,7 @@ const appRoutes: Routes = [
     { path: 'editlabel', component:EditLabelsComponent},
     { path: 'reminder', component:ReminderComponent},
     { path: 'searchnote', component:SearchNoteComponent},
+    { path: 'label/:labelName',component: LabelsComponent},
     { path: 'mainnote', component: MainnoteComponent }
   ]
 

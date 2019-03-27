@@ -21,13 +21,10 @@
         <span> <b>Edit Labels</b></span>
       </button>
       <div *ngFor="let label of labels">
-        &nbsp;
-        &nbsp;
-        <mat-icon>label_outline</mat-icon>
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        <span> {{label.labelName}}</span>
+        <button mat-menu-item (click)="notesWithList(label,'header/label')">
+          <mat-icon>label_outline</mat-icon> &nbsp;
+          <span>{{label.labelName}}</span>
+</button>
       </div>
       <mat-divider></mat-divider>
       <button mat-menu-item (click)="navigateArchive()">

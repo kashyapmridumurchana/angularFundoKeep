@@ -1,0 +1,6 @@
+<div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
+  <div fxFlex="40%">
+    <app-pinned-note [notes]="newNotes" [grid]="grid" [message]="'label'" (updateNoteEvent)="onUpdateNote($event)">
+    </app-pinned-note>
+  </div>
+</div>
