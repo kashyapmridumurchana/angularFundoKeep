@@ -140,4 +140,18 @@ deleteCollaborator(noteId,userId){
   return this.httpUtil.deleteForCollaborator(`${environment.note_url}deletecollaborator/`+noteId+'/'+userId)
 }
 
+addImage(file, noteId) {
+  const formdata = new FormData();
+  formdata.append("file", file);
+  return this.httpUtil.postForAddImage(environment.note_url + 'photo/' + noteId, formdata, {
+    reportProgress: true,
+    responseType: 'text'
+  })
+}
+
+removeImage(imagesId)
+  {
+    return this.httpUtil.removeImage(environment.note_url + 'photo/' + imagesId);
+}
+
 }

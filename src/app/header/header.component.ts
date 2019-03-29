@@ -5,7 +5,6 @@ import { HelperKeepService } from '../core/service/helper-keep.service';
 import { HttpService } from '../core/service/http/http.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpHeaders } from '@angular/common/http';
-import { user } from '../core/model/user/user';
 interface ImageData {
   imageSrc: any;
 }

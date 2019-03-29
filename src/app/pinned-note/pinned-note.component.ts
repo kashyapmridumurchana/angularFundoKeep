@@ -8,6 +8,7 @@ import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
 import { UserService } from '../core/service/user/user.service';
 import { user } from '../core/model/user/user';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class PinnedNoteComponent implements OnInit {
   @Input() notes
   @Input() grid = false;
   @Input() message;
+  changeText=false;
   @Output() eventPin = new EventEmitter();
   user: user;
   @Output() updateNoteEvent = new EventEmitter();
@@ -27,7 +29,8 @@ export class PinnedNoteComponent implements OnInit {
   public selectable = true;
   public removable = true;
   public labels: Label[] = [];
-  constructor(private userService: UserService, private noteService: NoteService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
+  selectedFile: File;
+  constructor(private userService: UserService,private sanitizer: DomSanitizer, private noteService: NoteService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
 
   ngOnInit() {
@@ -123,5 +126,35 @@ export class PinnedNoteComponent implements OnInit {
     console.log(note.reminder);
     const data = { note }
     this.eventPin.emit(data);
+}
+public onFileChanged(event, note) {
+  this.selectedFile = event.target.files[0];
+  this.uploadImage(note);
+}
+
+public uploadImage(note) {
+  this.noteService.addImage(this.selectedFile, note.noteId).subscribe((resp) => {
+    console.log("image added")
+    const data = { note }
+    this.eventPin.emit(data);
+  }
+  );
+}
+public getImage(image, note): any {
+  const url = `data:${note.contentType};base64,${image.images}`;
+  return this.sanitizer.bypassSecurityTrustUrl(url);
+}
+
+public deleteImage(image,note)
+  {
+    console.log(image.imagesId)
+    this.noteService.removeImage(image.imagesId).subscribe((resp)=>
+    {
+      console.log("successfull")
+      const data = { note }
+      this.eventPin.emit(data);
+      // this.noteService.updateNote(note);
+      
+    })
 }
 }

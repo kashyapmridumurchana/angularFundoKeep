@@ -16,16 +16,17 @@
       <span>
         <font size="1" face="arial">LABELS</font>
       </span>
-      <button mat-menu-item (click)="editLabels()">
-        <mat-icon>edit</mat-icon>
-        <span> <b>Edit Labels</b></span>
-      </button>
+      
       <div *ngFor="let label of labels">
         <button mat-menu-item (click)="notesWithList(label,'header/label')">
           <mat-icon>label_outline</mat-icon> &nbsp;
           <span>{{label.labelName}}</span>
 </button>
       </div>
+      <button mat-menu-item (click)="editLabels()">
+        <mat-icon>edit</mat-icon>
+        <span> <b>Edit Labels</b></span>
+      </button>
       <mat-divider></mat-divider>
       <button mat-menu-item (click)="navigateArchive()">
         <mat-icon>archive</mat-icon>
